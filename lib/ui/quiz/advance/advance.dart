@@ -79,7 +79,7 @@ class _AdvanceState extends State<Advance> {
                 ),
               ),
               dataSoalOk == null
-                  ? Center(child: SpinKitThreeBounce(color: Colors.orange[600]))
+                  ? Center(child: SpinKitThreeBounce(color: Colors.red[600]))
                   : Container(
                       height: 550,
                       padding: const EdgeInsets.only(left: 12),

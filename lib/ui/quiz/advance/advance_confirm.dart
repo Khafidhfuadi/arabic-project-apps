@@ -115,7 +115,7 @@ class Inadvance extends StatelessWidget {
                         )
                       ]));
                 },
-                itemCount: 3,
+                itemCount: 1,
                 viewportFraction: 0.8,
                 scale: 0.9,
               ),
