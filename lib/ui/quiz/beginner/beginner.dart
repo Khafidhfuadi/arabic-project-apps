@@ -1,4 +1,4 @@
-part of '../uis.dart';
+part of '../../uis.dart';
 
 class Beginner extends StatefulWidget {
   @override
@@ -9,7 +9,7 @@ class _BeginnerState extends State<Beginner> {
   List dataSoalOk;
 
   void dataSoal() {
-    getSoal().then((value) {
+    getSoalBegin().then((value) {
       setState(() {
         dataSoalOk = value;
       });
@@ -78,15 +78,15 @@ class _BeginnerState extends State<Beginner> {
               ),
               dataSoalOk == null
                   ? Center(
-                      child: CircularProgressIndicator(
-                      backgroundColor: Colors.white,
+                      child: SpinKitThreeBounce(
+                      color: Colors.greenAccent,
                     ))
                   : Container(
                       height: 550,
                       padding: const EdgeInsets.only(left: 12),
                       child: Swiper(
                         itemCount: dataSoalOk.length,
-                        itemWidth: MediaQuery.of(context).size.width - 2 * 25,
+                        itemWidth: MediaQuery.of(context).size.width - 2 * 20,
                         layout: SwiperLayout.STACK,
                         pagination: SwiperPagination(
                           builder: DotSwiperPaginationBuilder(
@@ -113,7 +113,7 @@ class _BeginnerState extends State<Beginner> {
                                             left: 30.0,
                                             right: 30.0,
                                             top: 40.0,
-                                            bottom: 55.0),
+                                            bottom: 50.0),
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
@@ -150,7 +150,7 @@ class _BeginnerState extends State<Beginner> {
                                               ),
                                               textAlign: TextAlign.left,
                                             ),
-                                            SizedBox(height: 35),
+                                            SizedBox(height: 70),
                                             Row(
                                               children: [
                                                 Text(

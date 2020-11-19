@@ -1,6 +1,6 @@
-part of '../uis.dart';
+part of '../../uis.dart';
 
-class Inconfirm extends StatelessWidget {
+class Inadvance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -9,7 +9,7 @@ class Inconfirm extends StatelessWidget {
         decoration: BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
-                colors: [Colors.orange[400], Colors.orange[200]])),
+                colors: [Colors.red[400], Colors.red[200]])),
         child: Column(
           children: [
             Container(
@@ -32,13 +32,13 @@ class Inconfirm extends StatelessWidget {
                         'Quiz',
                         style: TextStyle(
                           fontFamily: 'Avenir',
-                          fontSize: 40,
+                          fontSize: 30,
                           color: const Color(0xffffffff),
                           fontWeight: FontWeight.w900,
                         ),
                       ),
                       Text(
-                        'Intermediate',
+                        'Advance',
                         style: TextStyle(
                           fontFamily: 'Avenir',
                           fontSize: 15,
@@ -100,9 +100,9 @@ class Inconfirm extends StatelessWidget {
                             SizedBox(width: 10),
                             RawMaterialButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, '/intermediate');
+                                Navigator.pushNamed(context, '/advsession');
                               },
-                              fillColor: Colors.orange,
+                              fillColor: Colors.red,
                               child: Text(
                                 "Accept",
                                 style: TextStyle(

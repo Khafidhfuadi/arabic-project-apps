@@ -1,14 +1,14 @@
 part of 'viewModels.dart';
 
-Future getSoalBegin() async {
+Future getSoalAdvan() async {
   try {
     http.Response hasil = await http.get(
-        Uri.encodeFull("https://db-arab.herokuapp.com/api/begin"),
+        Uri.encodeFull("https://db-arab.herokuapp.com/api/advance"),
         headers: {"Accept": "application/json"});
 
     if (hasil.statusCode == 200) {
       print("Sukses menampilkan soal");
-      final data = beginnerModelFromJson(hasil.body);
+      final data = advanceModelFromJson(hasil.body);
       return data;
     } else {
       print("Gagal menampilkan soal");

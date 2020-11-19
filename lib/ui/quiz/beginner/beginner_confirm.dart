@@ -1,4 +1,4 @@
-part of '../uis.dart';
+part of '../../uis.dart';
 
 class Begconfirm extends StatelessWidget {
   @override
@@ -115,7 +115,7 @@ class Begconfirm extends StatelessWidget {
                         )
                       ]));
                 },
-                itemCount: 3,
+                itemCount: 1,
                 viewportFraction: 0.8,
                 scale: 0.9,
               ),

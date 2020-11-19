@@ -1,16 +1,15 @@
 part of 'models.dart';
 
-List<BeginnerModel> beginnerModelFromJson(String str) => List<BeginnerModel>.from(json.decode(str).map((x) => BeginnerModel.fromJson(x)));
+List<AdvanceModel> advanceModelFromJson(String str) => List<AdvanceModel>.from(json.decode(str).map((x) => AdvanceModel.fromJson(x)));
 
-String beginnerModelToJson(List<BeginnerModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String advanceModelToJson(List<AdvanceModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class BeginnerModel {
-    BeginnerModel({
+class AdvanceModel {
+    AdvanceModel({
         this.id,
         this.soal,
         this.bahasaArab,
-        this.bahasaIndo,
-        this.gambar,
+        this.jawaban,
         this.createdAt,
         this.updatedAt,
     });
@@ -18,17 +17,15 @@ class BeginnerModel {
     int id;
     String soal;
     String bahasaArab;
-    String bahasaIndo;
-    String gambar;
+    dynamic jawaban;
     DateTime createdAt;
     DateTime updatedAt;
 
-    factory BeginnerModel.fromJson(Map<String, dynamic> json) => BeginnerModel(
+    factory AdvanceModel.fromJson(Map<String, dynamic> json) => AdvanceModel(
         id: json["id"],
         soal: json["soal"],
         bahasaArab: json["bahasa_arab"],
-        bahasaIndo: json["bahasa_indo"],
-        gambar: json["gambar"],
+        jawaban: json["jawaban"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
     );
@@ -37,8 +34,7 @@ class BeginnerModel {
         "id": id,
         "soal": soal,
         "bahasa_arab": bahasaArab,
-        "bahasa_indo": bahasaIndo,
-        "gambar": gambar,
+        "jawaban": jawaban,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
     };

@@ -1,4 +1,4 @@
-part of '../uis.dart';
+part of '../../uis.dart';
 
 class Advance extends StatefulWidget {
   @override
@@ -8,6 +8,21 @@ class Advance extends StatefulWidget {
 class _AdvanceState extends State<Advance> {
   String jawaban = "";
   TextEditingController controller = TextEditingController();
+  List dataSoalOk;
+
+  void dataSoal() {
+    getSoalAdvan().then((value) {
+      setState(() {
+        dataSoalOk = value;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    dataSoal();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,14 +82,14 @@ class _AdvanceState extends State<Advance> {
                 height: 550,
                 padding: const EdgeInsets.only(left: 12),
                 child: Swiper(
-                  itemCount: 5,
+                  itemCount: dataSoalOk.length,
                   itemWidth: MediaQuery.of(context).size.width - 2 * 20,
                   layout: SwiperLayout.STACK,
                   pagination: SwiperPagination(
                     builder: DotSwiperPaginationBuilder(
                         activeSize: 20, space: 8, activeColor: Colors.red),
                   ),
-                  itemBuilder: (context, index) {
+                  itemBuilder: (context, i) {
                     return InkWell(
                       onTap: () {},
                       child: Stack(
@@ -103,7 +118,7 @@ class _AdvanceState extends State<Advance> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            "1.",
+                                            dataSoalOk[i].soal,
                                             style: TextStyle(
                                               fontFamily: 'Avenir',
                                               fontSize: 44,
@@ -119,23 +134,43 @@ class _AdvanceState extends State<Advance> {
                                         '(TERJEMAHKAN KALIMAT TERSEBUT KE BAHASA INDONESIA)',
                                         style: TextStyle(
                                           fontFamily: 'Mont',
-                                          fontSize: 9,
+                                          fontSize: 13,
                                           color: Colors.black,
                                           fontWeight: FontWeight.bold,
                                         ),
                                         textAlign: TextAlign.center,
                                       ),
                                       SizedBox(height: 15),
-                                      Text(
-                                        'عَائِلَتُنَا تَتَنَفَّس الْهَوَاء الْنَقِيَ فِي الْجِبَالِ',
-                                        style: TextStyle(
-                                          fontFamily: 'Arabic',
-                                          fontSize: 23,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
+                                      Container(
+                                          alignment: Alignment.center,
+                                          margin: EdgeInsets.only(
+                                              top: 10, left: 25, right: 35),
+                                          padding: EdgeInsets.only(
+                                              right: 20,
+                                              left: 10,
+                                              bottom: 5,
+                                              top: 5),
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                              color: Colors.red
+                                              ),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                dataSoalOk[i].bahasaArab,
+                                                style: TextStyle(
+                                                  fontFamily: 'Arabic',
+                                                  fontSize: 25,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                                textAlign: TextAlign.left,
+                                              ),
+                                            ],
+                                          )),
                                       SizedBox(height: 35),
                                       TextField(
                                         autofocus: true,
