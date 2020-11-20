@@ -7,7 +7,7 @@ class Screen extends StatefulWidget {
 
 class _ScreenState extends State<Screen> {
   int _currentIndex = 0;
-  final List<Widget> _children = [Quiz(), Text("Halo"), Text("2")];
+  final List<Widget> _children = [Quiz(), Learning(), Account()];
 
   void onTabTapped(int index) {
     setState(() {

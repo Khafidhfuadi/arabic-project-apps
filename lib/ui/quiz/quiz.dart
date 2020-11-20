@@ -1,4 +1,4 @@
-part of 'uis.dart';
+part of '../uis.dart';
 
 class Quiz extends StatelessWidget {
   @override
@@ -66,14 +66,14 @@ class Quiz extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.only(bottom: 10),
-                  height: 40,
+                  height: 35,
                   child: Stack(
                     children: [
                       Padding(
                         padding:
                             const EdgeInsets.only(left: kDefaultPadding / 10),
                         child: Text(
-                          "Programs",
+                          "Programs Quiz",
                           style: TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.w700,
@@ -102,6 +102,7 @@ class Quiz extends StatelessWidget {
               child: ListView(
             children: [
               InkWell(
+                onTap: () {},
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 7),
                   margin: EdgeInsets.only(right: 100),
