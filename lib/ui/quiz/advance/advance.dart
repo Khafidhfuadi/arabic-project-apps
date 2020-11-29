@@ -27,6 +27,7 @@ class _AdvanceState extends State<Advance> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       backgroundColor: Colors.white,
       body: Container(
         decoration: BoxDecoration(

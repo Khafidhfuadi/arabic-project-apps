@@ -17,7 +17,7 @@ class _AccountState extends State<Account> {
         children: [
           Container(
             margin: EdgeInsets.only(bottom: kDefaultPadding * 1.2),
-            height: size.height * 1 / 4,
+            height: size.height * 1 / 3.8,
             child: Stack(
               children: <Widget>[
                 Container(
@@ -26,7 +26,7 @@ class _AccountState extends State<Account> {
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
                           begin: Alignment.topCenter,
-                          colors: [Colors.orange[700], Colors.orange[300]])),
+                          colors: [Colors.yellow[700], Colors.yellow[300]])),
                 ),
                 Positioned(
                   bottom: 38.0,
@@ -45,8 +45,8 @@ class _AccountState extends State<Account> {
                                   alignment: Alignment.center,
                                   child: Container(
                                     margin: EdgeInsets.only(
-                                        top: 10,
-                                        bottom: 10,
+                                        top: 18,
+                                        bottom: 18,
                                         left: 20,
                                         right: 20),
                                     width: 100.0,
@@ -61,7 +61,8 @@ class _AccountState extends State<Account> {
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(80.0)),
                                         border: Border.all(
-                                            color: Colors.white, width: 4.0)),
+                                            color: Colors.orange[100],
+                                            width: 4.0)),
                                   ),
                                 ),
                                 Column(
@@ -116,7 +117,13 @@ class _AccountState extends State<Account> {
                                       ],
                                     ),
                                   ],
-                                )
+                                ),
+                                Container(
+                                    height: 80,
+                                    width: 80,
+                                    margin: EdgeInsets.only(left: 40),
+                                    color: Colors.white,
+                                    child: CustomProgressIndicator()),
                               ]),
                         ],
                       )),
@@ -302,8 +309,56 @@ class _AccountState extends State<Account> {
                 ),
               ),
             ],
-          ))
+          )),
         ],
+      ),
+    );
+  }
+}
+
+class CustomProgressIndicator extends StatefulWidget {
+  @override
+  _CustomProgressIndicatorState createState() =>
+      _CustomProgressIndicatorState();
+}
+
+class _CustomProgressIndicatorState extends State<CustomProgressIndicator> {
+  double percent = 0.0;
+
+  @override
+  void initState() {
+    Timer timer;
+    timer = Timer.periodic(Duration(milliseconds: 100), (_) {
+      print('Percent Update');
+      setState(() {
+        percent += 1;
+        if (percent >= 50) {
+          timer.cancel();
+          // percent=0;
+        }
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: LiquidCircularProgressIndicator(
+        value: percent / 100,
+        valueColor: AlwaysStoppedAnimation(Colors.blue),
+        backgroundColor: Colors.grey[100],
+        borderColor: Colors.grey[200],
+        borderWidth: 4.0,
+        direction: Axis.vertical,
+        center: Text(
+          percent.toString() + "%",
+          style: TextStyle(
+              fontSize: 10.0,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+              fontFamily: "Avenir"),
+        ),
       ),
     );
   }

@@ -6,23 +6,69 @@ class Intermediate extends StatefulWidget {
 }
 
 class _IntermediateState extends State<Intermediate> {
-  String _valBoolean;
-  List _listBoolean = ["True", "False"];
-  List dataSoalOk;
+  var counter = 0;
 
-  void dataSoal() {
-    getSoalInter().then((value) {
-      setState(() {
-        dataSoalOk = value;
-      });
+  List qList = [
+    Questions("1.The human body has four lungs.", false),
+    Questions("2.Kelvin is a measure of temperature.", true),
+    Questions("3.The Atlantic Ocean is the biggest ocean on Earth.", false),
+    Questions("4.Sharks are mammals.", false),
+    Questions("5.The human skeleton is made up of less than 100 bones.", false),
+    Questions("6.Atomic bombs work by atomic fission.", true),
+    Questions("7.Molecules are chemically bonded.", true),
+    Questions("8.Spiders have six legs.", false),
+    Questions("9.Mount Kilimanjaro is the tallest mountain in the world.", false),
+    Questions("10.The study of plants is known as botany.", true),
+  ];
+
+  var score = 0;
+
+  checkWin(bool userChoice, BuildContext context) {
+    if (userChoice == qList[counter].isCorrect) {
+      print("correct");
+
+      score = score + 5;
+      final snackbar = SnackBar(
+        duration: Duration(milliseconds: 500),
+        backgroundColor: Colors.green,
+        content: Text("Correct!"),
+      );
+      Scaffold.of(context).showSnackBar(snackbar);
+    } else {
+      print("false");
+      score = score + 0;
+      final snackbar = SnackBar(
+        duration: Duration(milliseconds: 500),
+        backgroundColor: Colors.red,
+        content: Text("Incorrect!"),
+      );
+      Scaffold.of(context).showSnackBar(snackbar);
+    }
+    setState(() {
+      if (counter < 9) {
+        counter = counter + 1;
+      }
     });
   }
 
-  @override
-  void initState() {
-    super.initState();
-    dataSoal();
-  }
+  // List datadariJSON;
+
+  // Future ambildata() async {
+  //   http.Response hasil = await http.get(
+  //     Uri.encodeFull("https://al-quran-8d642.firebaseio.com/data.json?print=pretty"),
+  //       headers: {"Accept": "application/json"}
+  //   );
+
+  //   this.setState(() {
+  //     datadariJSON = json.decode(hasil.body);
+  //   });
+  // }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   this.ambildata();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -79,98 +125,101 @@ class _IntermediateState extends State<Intermediate> {
                   ],
                 ),
               ),
-              dataSoalOk == null
-                  ? Center(
-                      child: SpinKitThreeBounce(color: Colors.orange[600]))
-                  : Container(
-                      height: 550,
-                      padding: const EdgeInsets.only(left: 12),
-                      child: Swiper(
-                        itemCount: dataSoalOk.length,
-                        itemWidth: MediaQuery.of(context).size.width - 2 * 25,
-                        layout: SwiperLayout.STACK,
-                        pagination: SwiperPagination(
-                          builder: DotSwiperPaginationBuilder(
-                              activeSize: 20,
-                              space: 8,
-                              activeColor: Colors.orange[600]),
-                        ),
-                        itemBuilder: (context, i) {
-                          return InkWell(
-                            onTap: () {},
-                            child: Stack(
-                              children: <Widget>[
-                                Column(
-                                  children: <Widget>[
-                                    SizedBox(height: 60),
-                                    Card(
-                                      elevation: 8,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(32),
-                                      ),
-                                      color: Colors.grey[100],
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 30.0,
-                                            right: 30.0,
-                                            top: 40.0,
-                                            bottom: 55.0),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Text(
-                                              dataSoalOk[i].soal + ".",
-                                              style: TextStyle(
-                                                fontFamily: 'Avenir',
-                                                fontSize: 44,
-                                                color: const Color(0xff47455f),
-                                                fontWeight: FontWeight.w900,
-                                              ),
-                                              textAlign: TextAlign.left,
-                                            ),
-                                            SizedBox(height: 85),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  'Bahasa arabnya ',
-                                                  style: TextStyle(
-                                                      fontFamily: 'Mont',
-                                                      fontSize: 18,
-                                                      color: Colors.black,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                                Text(
-                                                  dataSoalOk[i].bahasaIndo,
-                                                  style: TextStyle(
-                                                      fontFamily: 'Mont',
-                                                      fontSize: 18,
-                                                      color: Colors.black,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                                SizedBox(width: 10),
-                                              ],
-                                            ),
-                                            Container(
-                                              alignment: Alignment.center,
-                                              margin: EdgeInsets.only(top: 10, left: 25, right: 35),
-                                              padding: EdgeInsets.only(
-                                                  right: 20,
-                                                  left: 10,
-                                                  bottom: 5, 
-                                                  top: 5),
-                                              decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(15),
-                                                  color: Colors.amber[900]),
-                                              child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                dataSoalOk[i].bahasaArab,
+              // datadariJSON == null
+              //     ? Center(child: SpinKitThreeBounce(color: Colors.orange[600])) :
+              Container(
+                height: 550,
+                padding: const EdgeInsets.only(left: 12),
+                child: Swiper(
+                  itemCount: qList.length,
+                  itemWidth: MediaQuery.of(context).size.width - 2 * 25,
+                  layout: SwiperLayout.STACK,
+                  pagination: SwiperPagination(
+                    builder: DotSwiperPaginationBuilder(
+                        activeSize: 20,
+                        space: 8,
+                        activeColor: Colors.orange[600]),
+                  ),
+                  itemBuilder: (context, i) {
+                    return InkWell(
+                      onTap: () {},
+                      child: Stack(
+                        children: <Widget>[
+                          Column(
+                            children: <Widget>[
+                              SizedBox(height: 60),
+                              Card(
+                                elevation: 8,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(32),
+                                ),
+                                color: Colors.grey[100],
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 30.0,
+                                      right: 30.0,
+                                      top: 40.0,
+                                      bottom: 55.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      // Text(
+                                      //   datadariJSON[i]['soal'] + ".",
+                                      //   style: TextStyle(
+                                      //     fontFamily: 'Avenir',
+                                      //     fontSize: 44,
+                                      //     color: const Color(0xff47455f),
+                                      //     fontWeight: FontWeight.w900,
+                                      //   ),
+                                      //   textAlign: TextAlign.left,
+                                      // ),
+                                      SizedBox(height: 85),
+                                      // Row(
+                                      //   mainAxisAlignment:
+                                      //       MainAxisAlignment.center,
+                                      //   children: [
+                                      //     Text(
+                                      //       'Bahasa arabnya ',
+                                      //       style: TextStyle(
+                                      //           fontFamily: 'Mont',
+                                      //           fontSize: 18,
+                                      //           color: Colors.black,
+                                      //           fontWeight:
+                                      //               FontWeight.bold),
+                                      //     ),
+                                      //     Text(
+                                      //       datadariJSON[i]['bahasa_indo'],
+                                      //       style: TextStyle(
+                                      //           fontFamily: 'Mont',
+                                      //           fontSize: 18,
+                                      //           color: Colors.black,
+                                      //           fontWeight:
+                                      //               FontWeight.bold),
+                                      //     ),
+                                      //     SizedBox(width: 10),
+                                      //   ],
+                                      // ),
+                                      Container(
+                                          alignment: Alignment.center,
+                                          margin: EdgeInsets.only(
+                                              top: 10, left: 25, right: 35),
+                                          padding: EdgeInsets.only(
+                                              right: 20,
+                                              left: 10,
+                                              bottom: 5,
+                                              top: 5),
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                              color: Colors.amber[900]),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                // datadariJSON[i]['bahasa_arab'],
+                                                qList[counter].qText,
                                                 style: TextStyle(
                                                   fontFamily: 'Arabic',
                                                   fontSize: 25,
@@ -179,74 +228,80 @@ class _IntermediateState extends State<Intermediate> {
                                                 ),
                                                 textAlign: TextAlign.left,
                                               ),
-                                                ],
-                                              )
-                                            ),
-                                            SizedBox(height: 95),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Positioned(
-                                  right: 100,
-                                  top: 65,
-                                  child: Text(
-                                    "Quiz",
-                                    style: TextStyle(
-                                      fontFamily: 'Avenir',
-                                      fontSize: 150,
-                                      color: Colors.black.withOpacity(0.08),
-                                      fontWeight: FontWeight.w900,
-                                    ),
-                                    textAlign: TextAlign.left,
+                                            ],
+                                          )),
+                                      SizedBox(height: 95),
+                                    ],
                                   ),
                                 ),
-                                Container(
-                                    height: 80,
-                                    margin: EdgeInsets.only(top: 350),
-                                    alignment: Alignment.center,
-                                    child: Container(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 14, vertical: 5),
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      child: DropdownButton(
-                                        icon: Icon(Icons.arrow_drop_down),
-                                        iconSize: 35,
-                                        underline: SizedBox(),
-                                        hint: Text("True or False",
-                                            style: TextStyle(
-                                                fontFamily: 'Avenir',
-                                                fontWeight: FontWeight.w500)),
-                                        value: _valBoolean,
-                                        items: _listBoolean.map((value) {
-                                          return DropdownMenuItem(
-                                            child: Text(value,
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontFamily: 'Avenir',
-                                                    fontWeight:
-                                                        FontWeight.w500)),
-                                            value: value,
-                                          );
-                                        }).toList(),
-                                        onChanged: (value) {
-                                          setState(() {
-                                            _valBoolean = value;
-                                          });
-                                        },
-                                      ),
-                                    ))
-                              ],
+                              ),
+                            ],
+                          ),
+                          Positioned(
+                            right: 100,
+                            top: 65,
+                            child: Text(
+                              "Quiz",
+                              style: TextStyle(
+                                fontFamily: 'Avenir',
+                                fontSize: 150,
+                                color: Colors.black.withOpacity(0.08),
+                                fontWeight: FontWeight.w900,
+                              ),
+                              textAlign: TextAlign.left,
                             ),
-                          );
-                        },
+                          ),
+                          Container(
+                              height: 80,
+                              margin: EdgeInsets.only(top: 350),
+                              alignment: Alignment.center,
+                              child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 14, vertical: 5),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      RaisedButton(
+                                        onPressed:()=> checkWin(true, context),
+                                        color: Colors.orangeAccent,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Text(
+                                          "True",
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'Avenir',
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                      RaisedButton(
+                                        onPressed: () => checkWin(false, context),
+                                        color: Colors.orangeAccent,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Text(
+                                          "False",
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'Avenir',
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  )))
+                        ],
                       ),
-                    ),
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),
@@ -254,3 +309,45 @@ class _IntermediateState extends State<Intermediate> {
     );
   }
 }
+
+// String _valBoolean;
+// List _listBoolean = ["True", "False"];
+
+// Container(
+//                                     height: 80,
+//                                     margin: EdgeInsets.only(top: 350),
+//                                     alignment: Alignment.center,
+//                                     child: Container(
+//                                       padding: EdgeInsets.symmetric(
+//                                           horizontal: 14, vertical: 5),
+//                                       decoration: BoxDecoration(
+//                                           color: Colors.white,
+//                                           borderRadius:
+//                                               BorderRadius.circular(10)),
+//                                       child: DropdownButton(
+//                                         icon: Icon(Icons.arrow_drop_down),
+//                                         iconSize: 35,
+//                                         underline: SizedBox(),
+//                                         hint: Text("True or False",
+//                                             style: TextStyle(
+//                                                 fontFamily: 'Avenir',
+//                                                 fontWeight: FontWeight.w500)),
+//                                         value: _valBoolean,
+//                                         items: _listBoolean.map((value) {
+//                                           return DropdownMenuItem(
+//                                             child: Text(value,
+//                                                 style: TextStyle(
+//                                                     color: Colors.black,
+//                                                     fontFamily: 'Avenir',
+//                                                     fontWeight:
+//                                                         FontWeight.w500)),
+//                                             value: value,
+//                                           );
+//                                         }).toList(),
+//                                         onChanged: (value) {
+//                                           setState(() {
+//                                             _valBoolean = value;
+//                                           });
+//                                         },
+//                                       ),
+//                                     ))

@@ -150,7 +150,7 @@ class _BeginnerState extends State<Beginner> {
                                               ),
                                               textAlign: TextAlign.left,
                                             ),
-                                            SizedBox(height: 70),
+                                            SizedBox(height: 50),
                                             Row(
                                               children: [
                                                 Text(
@@ -220,26 +220,26 @@ class _BeginnerState extends State<Beginner> {
                                                 ),
                                               ],
                                             ),
-                                            SizedBox(height: 32),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                              children: <Widget>[
-                                                Text(
-                                                  'SOAL SELANJUTNYA',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Mont',
-                                                    fontSize: 12,
-                                                    color: Colors.black,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                                Icon(
-                                                  Icons.arrow_forward,
-                                                  color: Colors.black,
-                                                ),
-                                              ],
-                                            ),
+                                            SizedBox(height: 40),
+                                            // Row(
+                                            //   mainAxisAlignment:
+                                            //       MainAxisAlignment.end,
+                                            //   children: <Widget>[
+                                            //     Text(
+                                            //       'SOAL SELANJUTNYA',
+                                            //       style: TextStyle(
+                                            //         fontFamily: 'Mont',
+                                            //         fontSize: 12,
+                                            //         color: Colors.black,
+                                            //         fontWeight: FontWeight.w500,
+                                            //       ),
+                                            //     ),
+                                            //     Icon(
+                                            //       Icons.arrow_forward,
+                                            //       color: Colors.black,
+                                            //     ),
+                                            //   ],
+                                            // ),
                                           ],
                                         ),
                                       ),
@@ -263,7 +263,7 @@ class _BeginnerState extends State<Beginner> {
                                 Container(
                                   height: 80,
                                   margin: EdgeInsets.only(
-                                      top: 400, left: 20, right: 260),
+                                      top: 340, left: 20, right: 240),
                                   alignment: Alignment.bottomRight,
                                   child: Row(
                                     mainAxisAlignment:

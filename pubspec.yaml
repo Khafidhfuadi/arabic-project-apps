@@ -26,6 +26,8 @@ dependencies:
   flutter_swiper: ^1.1.6
   http: any
   flutter_spinkit: "^4.1.2"
+  splashscreen: any
+  liquid_progress_indicator: ^0.3.2
   flutter:
     sdk: flutter
   # flutter_svg: ^0.19.1

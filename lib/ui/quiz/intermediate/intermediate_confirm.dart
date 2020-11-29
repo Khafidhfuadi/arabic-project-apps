@@ -1,6 +1,11 @@
 part of '../../uis.dart';
 
-class Inconfirm extends StatelessWidget {
+class Inconfirm extends StatefulWidget {
+  @override
+  _InconfirmState createState() => _InconfirmState();
+}
+
+class _InconfirmState extends State<Inconfirm> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -115,7 +120,7 @@ class Inconfirm extends StatelessWidget {
                         )
                       ]));
                 },
-                itemCount: 3,
+                itemCount: 1,
                 viewportFraction: 0.8,
                 scale: 0.9,
               ),
