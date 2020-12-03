@@ -116,29 +116,29 @@ class _LearningState extends State<Learning>
                       ],
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(left: 125),
-                    child: Row(
-                      children: [
-                        Text("Swipe",
-                            style: TextStyle(
-                                fontFamily: "Avenir",
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500)),
-                        Container(
-                          height: 30,
-                          width: 30,
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(100))),
-                          child: RawMaterialButton(
-                            onPressed: () {},
-                            child: Icon(Icons.arrow_forward),
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
+                  // Container(
+                  //   margin: EdgeInsets.only(left: 125),
+                  //   child: Row(
+                  //     children: [
+                  //       Text("Swipe",
+                  //           style: TextStyle(
+                  //               fontFamily: "Avenir",
+                  //               fontSize: 15,
+                  //               fontWeight: FontWeight.w500)),
+                  //       Container(
+                  //         height: 30,
+                  //         width: 30,
+                  //         decoration: BoxDecoration(
+                  //             borderRadius:
+                  //                 BorderRadius.all(Radius.circular(100))),
+                  //         child: RawMaterialButton(
+                  //           onPressed: () {},
+                  //           child: Icon(Icons.arrow_forward),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // )
                 ],
               ),
             ),
