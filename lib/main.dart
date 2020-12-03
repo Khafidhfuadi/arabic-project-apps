@@ -1,7 +1,9 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:bahasa_arab/homepage.dart';
-import 'package:splashscreen/splashscreen.dart';
+// import 'package:splashscreen/splashscreen.dart';
+// import 'package:flutter/animation.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -16,117 +18,45 @@ class SphScreen extends StatefulWidget {
   _SphScreenState createState() => _SphScreenState();
 }
 
-class _SphScreenState extends State<SphScreen> {
+class _SphScreenState extends State<SphScreen> with TickerProviderStateMixin {
+  // AnimationController controller;
+  // Animation<double> animation;
+
+  // initState() {
+  //   super.initState();
+  //   controller = AnimationController(
+  //       duration: const Duration(milliseconds: 1000), vsync: this);
+  //   animation =
+  //       CurvedAnimation(parent: controller, curve: Curves.easeInToLinear);
+  //   controller.forward();
+  // }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    return SplashScreen(
-      seconds: 5,
-      navigateAfterSeconds: MyApp(),
-      title: new Text('Welcome in Arabic appliocation',
-      style: new TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: 20.0
-      ),),
-      image: Image.asset("assets/image/backapp.png"),
-      backgroundColor: Colors.indigo[900],
-      styleTextUnderTheLoader: new TextStyle(),
-      photoSize: 100.0,
-      loaderColor: Colors.red
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: AnimatedSplashScreen(
+        splash: Image.asset("assets/image/backapp.png"),
+        nextScreen: MyApp(),
+        splashTransition: SplashTransition.slideTransition,
+        duration: 1000,
+      ),
     );
   }
 }
 
-
-// import 'dart:async';
-// import 'package:flutter/material.dart';
-
-// void main() => runApp(SphScreen());
-
-// class SphScreen extends StatefulWidget {
-//   @override
-//   State<StatefulWidget> createState() => FadeIn();
-// }
-
-// class FadeIn extends State<SphScreen> {
-//   Timer _timer;
-//   FlutterLogoStyle _logoStyle = FlutterLogoStyle.markOnly;
-//   FadeIn() {
-//     _timer = new Timer(const Duration(seconds: 5), () {
-//       setState(() {
-//         _logoStyle = FlutterLogoStyle.stacked;
-//       });
-//     });
-//   }
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Scaffold(
-//         body: Center(
-//           child: Container(
-//             child: new FlutterLogo(
-//               size: 200.0,
-//               style: _logoStyle,
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// import 'dart:math';
-
-// import 'package:flutter/material.dart';
-
-// void main() => runApp(AnimatedContainerApp());
-
-// class AnimatedContainerApp extends StatefulWidget {
-//   @override
-//   _AnimatedContainerAppState createState() => _AnimatedContainerAppState();
-// }
-
-// class _AnimatedContainerAppState extends State<AnimatedContainerApp> {
-//   double _width = 50;
-//   double _height = 50;
-//   Color _color = Colors.green;
-//   BorderRadiusGeometry _borderRadius = BorderRadius.circular(8);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Scaffold(
-//         body: Center(
-//           child: AnimatedContainer(
-//             width: _width,
-//             height: _height,
-//             decoration: BoxDecoration(
-//               color: _color,
-//               borderRadius: _borderRadius,
-//             ),
-//             duration: Duration(seconds: 1),
-//             curve: Curves.fastOutSlowIn,
-//           ),
-//         ),
-//         floatingActionButton: FloatingActionButton(
-//           child: Icon(Icons.play_arrow),
+// floatingActionButton: RaisedButton(
+//         elevation: 10,
+//         padding: EdgeInsets.all(-20),
+//         color: Colors.blueGrey[400],
 //           onPressed: () {
-//             setState(() {
-//               final random = Random();
-//               _width = random.nextInt(300).toDouble();
-//               _height = random.nextInt(300).toDouble();
-//               _color = Color.fromRGBO(
-//                 random.nextInt(256),
-//                 random.nextInt(256),
-//                 random.nextInt(256),
-//                 1,
-//               );
-//               _borderRadius =
-//                   BorderRadius.circular(random.nextInt(100).toDouble());
-//             });
+//             Navigator.push(context, MaterialPageRoute(builder: (context) {
+//               return MyApp();
+//             }));
 //           },
-//         ),
-//       ),
-//     );
-//   }
-// }
+//           child: Icon(Icons.arrow_right, size: 60,),
+//           shape: RoundedRectangleBorder(
+//             borderRadius: new BorderRadius.circular(18.0),
+//             side: BorderSide(color: Colors.black),
+//           )),

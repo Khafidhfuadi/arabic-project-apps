@@ -5,8 +5,19 @@ class Account extends StatefulWidget {
   _AccountState createState() => _AccountState();
 }
 
-class _AccountState extends State<Account> {
+class _AccountState extends State<Account> with SingleTickerProviderStateMixin {
   bool _lights = false;
+  AnimationController _animController;
+  Animation<double> _animation;
+
+  @override
+  void initState() {
+    _animController = AnimationController(
+        vsync: this, duration: Duration(milliseconds: 1500));
+    _animation = Tween(begin: 0.0, end: 1.0).animate(_animController);
+    _animController.forward();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,104 +40,107 @@ class _AccountState extends State<Account> {
                           colors: [Colors.yellow[700], Colors.yellow[300]])),
                 ),
                 Positioned(
-                  bottom: 38.0,
+                  bottom: 35.0,
                   left: 10,
                   right: 10.0,
-                  child: Card(
-                      elevation: 8.0,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                      child: Column(
-                        children: <Widget>[
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Container(
-                                  alignment: Alignment.center,
-                                  child: Container(
-                                    margin: EdgeInsets.only(
-                                        top: 18,
-                                        bottom: 18,
-                                        left: 20,
-                                        right: 20),
-                                    width: 100.0,
-                                    height: 100.0,
-                                    decoration: BoxDecoration(
-                                        color: Colors.orange[100],
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                              "assets/image/profile.jpg",
-                                            ),
-                                            fit: BoxFit.cover),
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(80.0)),
-                                        border: Border.all(
-                                            color: Colors.orange[100],
-                                            width: 4.0)),
+                  child: SlideTransition(
+                    position: Tween<Offset>(begin: Offset(0,-5), end: Offset(0,0)).animate(_animController),
+                                      child: Card(
+                        elevation: 8.0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8)),
+                        child: Column(
+                          children: <Widget>[
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                      margin: EdgeInsets.only(
+                                          top: 18,
+                                          bottom: 18,
+                                          left: 20,
+                                          right: 20),
+                                      width: 100.0,
+                                      height: 100.0,
+                                      decoration: BoxDecoration(
+                                          color: Colors.orange[100],
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                "assets/image/profile.jpg",
+                                              ),
+                                              fit: BoxFit.cover),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(80.0)),
+                                          border: Border.all(
+                                              color: Colors.orange[100],
+                                              width: 4.0)),
+                                    ),
                                   ),
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Yusuf Edogawa",
-                                      style: TextStyle(
-                                          fontFamily: "Avenir",
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey[600]),
-                                    ),
-                                    SizedBox(
-                                      height: 6,
-                                    ),
-                                    Text(
-                                      "Kelas 3 SMK",
-                                      style: TextStyle(
-                                          fontFamily: "Avenir",
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.grey[600]),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        RichText(
-                                          text: TextSpan(
-                                            text: "Learning Status : ",
-                                            style: TextStyle(
-                                              color: Colors.grey[600],
-                                              fontFamily: "Avenir",
-                                              fontWeight: FontWeight.bold,
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Yusuf Edogawa",
+                                        style: TextStyle(
+                                            fontFamily: "Avenir",
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.grey[600]),
+                                      ),
+                                      SizedBox(
+                                        height: 6,
+                                      ),
+                                      Text(
+                                        "Kelas 3 SMK",
+                                        style: TextStyle(
+                                            fontFamily: "Avenir",
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.grey[600]),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          RichText(
+                                            text: TextSpan(
+                                              text: "Learning Status : ",
+                                              style: TextStyle(
+                                                color: Colors.grey[600],
+                                                fontFamily: "Avenir",
+                                                fontWeight: FontWeight.bold,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Container(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 5, horizontal: 7),
-                                          decoration: BoxDecoration(
-                                              color: Colors.green,
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(7))),
-                                          child: Text("Aktif",
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 10,
-                                                fontFamily: "Avenir",
-                                                fontWeight: FontWeight.w500,
-                                              )),
-                                        )
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Container(
-                                    height: 80,
-                                    width: 80,
-                                    margin: EdgeInsets.only(left: 40),
-                                    color: Colors.white,
-                                    child: CustomProgressIndicator()),
-                              ]),
-                        ],
-                      )),
+                                          Container(
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 5, horizontal: 7),
+                                            decoration: BoxDecoration(
+                                                color: Colors.green,
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(7))),
+                                            child: Text("Aktif",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 10,
+                                                  fontFamily: "Avenir",
+                                                  fontWeight: FontWeight.w500,
+                                                )),
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  Container(
+                                      height: 80,
+                                      width: 80,
+                                      margin: EdgeInsets.only(left: 40),
+                                      color: Colors.white,
+                                      child: CustomProgressIndicator()),
+                                ]),
+                          ],
+                        )),
+                  ),
                 ),
               ],
             ),

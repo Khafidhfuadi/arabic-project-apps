@@ -5,7 +5,20 @@ class Learning extends StatefulWidget {
   _LearningState createState() => _LearningState();
 }
 
-class _LearningState extends State<Learning> {
+class _LearningState extends State<Learning>
+    with SingleTickerProviderStateMixin {
+  AnimationController _animController;
+  Animation<double> _animation;
+
+  @override
+  void initState() {
+    _animController = AnimationController(
+        vsync: this, duration: Duration(milliseconds: 1500));
+    _animation = Tween(begin: 0.0, end: 1.0).animate(_animController);
+    _animController.forward();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -76,15 +89,18 @@ class _LearningState extends State<Learning> {
                     height: 35,
                     child: Stack(
                       children: [
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(left: kDefaultPadding / 10),
-                          child: Text(
-                            "Learning Arabic",
-                            style: TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'Avenir'),
+                        FadeTransition(
+                          opacity: _animation,
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: kDefaultPadding / 10),
+                            child: Text(
+                              "Learning Arabic",
+                              style: TextStyle(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: 'Avenir'),
+                            ),
                           ),
                         ),
                         Positioned(
@@ -103,196 +119,202 @@ class _LearningState extends State<Learning> {
                   Container(
                     margin: EdgeInsets.only(left: 125),
                     child: Row(
-                    children: [
-                      Text("Swipe",
-                          style: TextStyle(
-                              fontFamily: "Avenir",
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500)),
-                      Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(100))),
-                        child: RawMaterialButton(
-                          onPressed: () {},
-                          child: Icon(Icons.arrow_forward),
+                      children: [
+                        Text("Swipe",
+                            style: TextStyle(
+                                fontFamily: "Avenir",
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500)),
+                        Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(100))),
+                          child: RawMaterialButton(
+                            onPressed: () {},
+                            child: Icon(Icons.arrow_forward),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
                   )
                 ],
               ),
             ),
             ScrollConfiguration(
               behavior: LearningScroll(),
-                          child: Container(
+              child: Container(
                 height: 300,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: <Widget>[
-                    Stack(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(top: 40, left: 20),
-                          padding: EdgeInsets.all(25),
-                          height: 300,
-                          width: 190,
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                  begin: Alignment.topLeft,
-                                  colors: [
-                                    HexColor("#58fe54"),
-                                    HexColor("#a2ff98")
-                                  ]),
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                topRight: Radius.circular(120),
-                                bottomLeft: Radius.circular(20),
-                                bottomRight: Radius.circular(20),
-                              )),
-                          child: Container(
-                            alignment: Alignment.topLeft,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(height: 80),
-                                Text("Beginner",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 21,
-                                        color: Colors.white,
-                                        fontFamily: 'Avenir')),
-                                SizedBox(height: 10),
-                                Text("Untuk 6-11 Tahun",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                        color: Colors.white,
-                                        fontFamily: 'Avenir')),
-                              ],
+                child: SlideTransition(
+                  position:
+                      Tween<Offset>(begin: Offset(-1, 5), end: Offset(0, 0))
+                          .animate(_animController),
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      Stack(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(top: 40, left: 20),
+                            padding: EdgeInsets.all(25),
+                            height: 300,
+                            width: 190,
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                    begin: Alignment.topLeft,
+                                    colors: [
+                                      HexColor("#58fe54"),
+                                      HexColor("#a2ff98")
+                                    ]),
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.circular(120),
+                                  bottomLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20),
+                                )),
+                            child: Container(
+                              alignment: Alignment.topLeft,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(height: 80),
+                                  Text("Beginner",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 21,
+                                          color: Colors.white,
+                                          fontFamily: 'Avenir')),
+                                  SizedBox(height: 10),
+                                  Text("Untuk 6-11 Tahun",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                          color: Colors.white,
+                                          fontFamily: 'Avenir')),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        Positioned(
-                          left: 0,
-                          right: 0,
-                          top: -20,
-                          child: Container(
-                            child: Image.asset("assets/icon/beginlearn.png",
-                                height: 170, width: 170),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Stack(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(top: 40, left: 40),
-                          padding: EdgeInsets.all(25),
-                          height: 300,
-                          width: 190,
-                          decoration: BoxDecoration(
-                             gradient: LinearGradient(
-                                  begin: Alignment.topLeft,
-                                  colors: [
-                                    HexColor("#ffa312"),
-                                    HexColor("#fec66d")
-                                  ]),
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                topRight: Radius.circular(120),
-                                bottomLeft: Radius.circular(20),
-                                bottomRight: Radius.circular(20),
-                              )),
-                          child: Container(
-                            alignment: Alignment.topLeft,
-                            child: Column(
-                              children: [
-                                SizedBox(height: 80),
-                                Text("Intermediate",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                        fontFamily: 'Avenir')),
-                                SizedBox(height: 10),
-                                Text("Untuk 12-15 Tahun",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                        color: Colors.white,
-                                        fontFamily: 'Avenir')),
-                              ],
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            top: -20,
+                            child: Container(
+                              child: Image.asset("assets/icon/beginlearn.png",
+                                  height: 170, width: 170),
                             ),
                           ),
-                        ),
-                        Positioned(
-                          left: 0,
-                          right: 0,
-                          top: -20,
-                          child: Container(
-                            child: Image.asset("assets/icon/intlearn.png",
-                                height: 170, width: 170),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Stack(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(top: 40, left: 40, right: 20),
-                          padding: EdgeInsets.all(25),
-                          height: 300,
-                          width: 190,
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                  begin: Alignment.topLeft,
-                                  colors: [
-                                    HexColor("#f91a1a"),
-                                    HexColor("#ff6464")
-                                  ]),
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                topRight: Radius.circular(120),
-                                bottomLeft: Radius.circular(20),
-                                bottomRight: Radius.circular(20),
-                              )),
-                          child: Container(
-                            alignment: Alignment.topLeft,
-                            child: Column(
-                              children: [
-                                SizedBox(height: 80),
-                                Text("Advance",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 21,
-                                        color: Colors.white,
-                                        fontFamily: 'Avenir')),
-                                Text("16 Tahun ke Atas",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                        color: Colors.white,
-                                        fontFamily: 'Avenir')),
-                              ],
+                        ],
+                      ),
+                      Stack(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(top: 40, left: 40),
+                            padding: EdgeInsets.all(25),
+                            height: 300,
+                            width: 190,
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                    begin: Alignment.topLeft,
+                                    colors: [
+                                      HexColor("#ffa312"),
+                                      HexColor("#fec66d")
+                                    ]),
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.circular(120),
+                                  bottomLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20),
+                                )),
+                            child: Container(
+                              alignment: Alignment.topLeft,
+                              child: Column(
+                                children: [
+                                  SizedBox(height: 80),
+                                  Text("Intermediate",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                          fontFamily: 'Avenir')),
+                                  SizedBox(height: 10),
+                                  Text("Untuk 12-15 Tahun",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                          color: Colors.white,
+                                          fontFamily: 'Avenir')),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        Positioned(
-                          left: 0,
-                          right: 0,
-                          top: -20,
-                          child: Container(
-                            child: Image.asset("assets/icon/advlearn.png",
-                                height: 170, width: 170),
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            top: -20,
+                            child: Container(
+                              child: Image.asset("assets/icon/intlearn.png",
+                                  height: 170, width: 170),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                      Stack(
+                        children: [
+                          Container(
+                            margin:
+                                EdgeInsets.only(top: 40, left: 40, right: 20),
+                            padding: EdgeInsets.all(25),
+                            height: 300,
+                            width: 190,
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                    begin: Alignment.topLeft,
+                                    colors: [
+                                      HexColor("#f91a1a"),
+                                      HexColor("#ff6464")
+                                    ]),
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.circular(120),
+                                  bottomLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20),
+                                )),
+                            child: Container(
+                              alignment: Alignment.topLeft,
+                              child: Column(
+                                children: [
+                                  SizedBox(height: 80),
+                                  Text("Advance",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 21,
+                                          color: Colors.white,
+                                          fontFamily: 'Avenir')),
+                                  Text("16 Tahun ke Atas",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                          color: Colors.white,
+                                          fontFamily: 'Avenir')),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            top: -20,
+                            child: Container(
+                              child: Image.asset("assets/icon/advlearn.png",
+                                  height: 170, width: 170),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
