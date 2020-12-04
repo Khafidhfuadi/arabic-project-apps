@@ -43,7 +43,7 @@ class _AccountState extends State<Account> with SingleTickerProviderStateMixin {
                   bottom: 35.0,
                   left: 10,
                   right: 10.0,
-                  child: SlideTransition(
+                  child: SlideTransition( 
                     position: Tween<Offset>(begin: Offset(0,-5), end: Offset(0,0)).animate(_animController),
                     // transformHitTests: ,
                                       child: Card(
