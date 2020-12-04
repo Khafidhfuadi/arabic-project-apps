@@ -43,10 +43,12 @@ class _AccountState extends State<Account> with SingleTickerProviderStateMixin {
                   bottom: 35.0,
                   left: 10,
                   right: 10.0,
-                  child: SlideTransition( 
-                    position: Tween<Offset>(begin: Offset(0,-5), end: Offset(0,0)).animate(_animController),
+                  child: SlideTransition(
+                    position:
+                        Tween<Offset>(begin: Offset(0, -5), end: Offset(0, 0))
+                            .animate(_animController),
                     // transformHitTests: ,
-                                      child: Card(
+                    child: Card(
                         elevation: 8.0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8)),
@@ -80,7 +82,8 @@ class _AccountState extends State<Account> with SingleTickerProviderStateMixin {
                                     ),
                                   ),
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         "Yusuf Edogawa",
@@ -148,191 +151,192 @@ class _AccountState extends State<Account> with SingleTickerProviderStateMixin {
           ),
           FadeTransition(
             opacity: _animation,
-                      child: Container(
-              child: Column(
-                children: [
-                  Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15, bottom: 20),
-              child: Row(
-                children: [
-                  Container(
-                    height: 20,
-                    child: Stack(
-                      children: [
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(left: kDefaultPadding / 10),
-                          child: Text(
-                            "User Account Settings",
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'Avenir'),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
+            child: Container(
                 child: Column(
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                      border: Border(
-                          top: BorderSide(color: Colors.grey[300]),
-                          bottom: BorderSide(color: Colors.grey[300]))),
-                  child: ListTile(
-                    onTap: () {},
-                    leading: Icon(
-                      Icons.mail_outline,
-                      color: Colors.brown,
-                      size: 30,
-                    ),
-                    title: Text("Change Email Address",
-                        style: TextStyle(
-                            color: Colors.grey[600],
-                            fontFamily: "Mont",
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12)),
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      border:
-                          Border(bottom: BorderSide(color: Colors.grey[300]))),
-                  child: ListTile(
-                    onTap: () {},
-                    leading: Icon(
-                      Icons.mode_edit,
-                      color: Colors.blueAccent,
-                      size: 30,
-                    ),
-                    title: Text("Edit Your Account",
-                        style: TextStyle(
-                            color: Colors.grey[600],
-                            fontFamily: "Mont",
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12)),
-                  ),
-                ),
-              ],
-            )),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-              child: Row(
-                children: [
-                  Container(
-                    height: 20,
-                    child: Stack(
-                      children: [
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(left: kDefaultPadding / 10),
-                          child: Text(
-                            "General Section",
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'Avenir'),
-                          ),
+                Padding(
+                  padding:
+                      const EdgeInsets.only(left: 15, right: 15, bottom: 20),
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 20,
+                        child: Stack(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: kDefaultPadding / 10),
+                              child: Text(
+                                "User Account Settings",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w700,
+                                    fontFamily: 'Avenir'),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-                child: Column(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      border: Border(
-                          top: BorderSide(color: Colors.grey[300]),
-                          bottom: BorderSide(color: Colors.grey[300]))),
-                  child: SwitchListTile(
-                    title: Text('Notification Sound',
-                        style: TextStyle(
-                            color: Colors.grey[600],
-                            fontFamily: "Mont",
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12)),
-                    value: _lights,
-                    onChanged: (bool value) {
-                      setState(() {
-                        _lights = value;
-                      });
-                    },
-                    secondary: Icon(
-                      Icons.notifications_none,
-                      color: Colors.purple,
-                      size: 30,
-                    ),
+                      ),
+                    ],
                   ),
                 ),
                 Container(
-                  decoration: BoxDecoration(
-                      border:
-                          Border(bottom: BorderSide(color: Colors.grey[300]))),
-                  child: ListTile(
-                    onTap: () {},
-                    leading: Icon(
-                      Icons.share,
-                      color: Colors.green,
-                      size: 30,
+                    child: Column(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border(
+                              top: BorderSide(color: Colors.grey[300]),
+                              bottom: BorderSide(color: Colors.grey[300]))),
+                      child: ListTile(
+                        onTap: () {},
+                        leading: Icon(
+                          Icons.mail_outline,
+                          color: Colors.brown,
+                          size: 30,
+                        ),
+                        title: Text("Change Email Address",
+                            style: TextStyle(
+                                color: Colors.grey[600],
+                                fontFamily: "Mont",
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12)),
+                      ),
                     ),
-                    title: Text("Share this App",
-                        style: TextStyle(
-                            color: Colors.grey[600],
-                            fontFamily: "Mont",
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12)),
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(color: Colors.grey[300]))),
+                      child: ListTile(
+                        onTap: () {},
+                        leading: Icon(
+                          Icons.mode_edit,
+                          color: Colors.blueAccent,
+                          size: 30,
+                        ),
+                        title: Text("Edit Your Account",
+                            style: TextStyle(
+                                color: Colors.grey[600],
+                                fontFamily: "Mont",
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12)),
+                      ),
+                    ),
+                  ],
+                )),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 20,
+                        child: Stack(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: kDefaultPadding / 10),
+                              child: Text(
+                                "General Section",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w700,
+                                    fontFamily: 'Avenir'),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Container(
-                  decoration: BoxDecoration(
-                      border:
-                          Border(bottom: BorderSide(color: Colors.grey[300]))),
-                  child: ListTile(
-                    onTap: () {},
-                    leading: Icon(
-                      Icons.repeat,
-                      color: Colors.red,
-                      size: 30,
+                    child: Column(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border(
+                              top: BorderSide(color: Colors.grey[300]),
+                              bottom: BorderSide(color: Colors.grey[300]))),
+                      child: SwitchListTile(
+                        title: Text('Notification Sound',
+                            style: TextStyle(
+                                color: Colors.grey[600],
+                                fontFamily: "Mont",
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12)),
+                        value: _lights,
+                        onChanged: (bool value) {
+                          setState(() {
+                            _lights = value;
+                          });
+                        },
+                        secondary: Icon(
+                          Icons.notifications_none,
+                          color: Colors.purple,
+                          size: 30,
+                        ),
+                      ),
                     ),
-                    title: Text("Reset All My Progress",
-                        style: TextStyle(
-                            color: Colors.grey[600],
-                            fontFamily: "Mont",
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12)),
-                  ),
-                ),
-                Ink(
-                  color: Colors.red[400],
-                  child: ListTile(
-                    onTap: () {},
-                    leading: Icon(
-                      Icons.delete,
-                      color: Colors.white,
-                      size: 30,
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(color: Colors.grey[300]))),
+                      child: ListTile(
+                        onTap: () {},
+                        leading: Icon(
+                          Icons.share,
+                          color: Colors.green,
+                          size: 30,
+                        ),
+                        title: Text("Share this App",
+                            style: TextStyle(
+                                color: Colors.grey[600],
+                                fontFamily: "Mont",
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12)),
+                      ),
                     ),
-                    title: Text("Delete My Account",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "Mont",
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12)),
-                  ),
-                ),
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(color: Colors.grey[300]))),
+                      child: ListTile(
+                        onTap: () {},
+                        leading: Icon(
+                          Icons.repeat,
+                          color: Colors.red,
+                          size: 30,
+                        ),
+                        title: Text("Reset All My Progress",
+                            style: TextStyle(
+                                color: Colors.grey[600],
+                                fontFamily: "Mont",
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12)),
+                      ),
+                    ),
+                    Ink(
+                      color: Colors.red[400],
+                      child: ListTile(
+                        onTap: () {},
+                        leading: Icon(
+                          Icons.delete,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                        title: Text("Delete My Account",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: "Mont",
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12)),
+                      ),
+                    ),
+                  ],
+                )),
               ],
             )),
-                ],
-              )
-            ),
           )
         ],
       ),

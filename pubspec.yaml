@@ -21,6 +21,9 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  flutter:
+    sdk: flutter
+    
   grouped_buttons: ^1.0.4
   hexcolor: ^1.0.6
   flutter_swiper: ^1.1.6
@@ -29,9 +32,13 @@ dependencies:
   splashscreen: any
   liquid_progress_indicator: ^0.3.2
   animated_splash_screen: ^1.0.1+2
-  flutter:
-    sdk: flutter
-  # flutter_svg: ^0.19.1
+  quiz_view: ^1.0.3
+  flutter_launcher_icons: ^0.8.1
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/image/launcher.jpg"
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

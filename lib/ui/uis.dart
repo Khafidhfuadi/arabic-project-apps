@@ -6,13 +6,14 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:grouped_buttons/grouped_buttons.dart';
+// import 'package:grouped_buttons/grouped_buttons.dart';
 import 'package:flutter/cupertino.dart';
 // import 'package:http/http.dart' as http;
 import 'package:hexcolor/hexcolor.dart';
 // import 'dart:convert';
 import 'dart:async';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
+import 'package:quiz_view/quiz_view.dart';
 
 part 'bottomnavigation.dart';
 
