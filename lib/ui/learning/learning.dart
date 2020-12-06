@@ -13,8 +13,10 @@ class _LearningState extends State<Learning>
   @override
   void initState() {
     _animController = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 1500));
-    _animation = Tween(begin: 0.0, end: 1.0).animate(_animController);
+        vsync: this, duration: Duration(milliseconds: 1000));
+    final Animation curve =
+        CurvedAnimation(parent: _animController, curve: Curves.fastOutSlowIn);
+    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(curve);
     _animController.forward();
     super.initState();
   }
@@ -148,7 +150,7 @@ class _LearningState extends State<Learning>
                 height: 300,
                 child: SlideTransition(
                   position:
-                      Tween<Offset>(begin: Offset(-1, 5), end: Offset(0, 0))
+                      Tween<Offset>(begin: Offset(-1, 0), end: Offset(0, 0))
                           .animate(_animController),
                   child: ListView(
                     scrollDirection: Axis.horizontal,
@@ -156,7 +158,7 @@ class _LearningState extends State<Learning>
                       Stack(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(top: 40, left: 20),
+                            margin: EdgeInsets.only(top: 40, left: 25),
                             padding: EdgeInsets.all(25),
                             height: 300,
                             width: 190,
@@ -210,7 +212,7 @@ class _LearningState extends State<Learning>
                       Stack(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(top: 40, left: 40),
+                            margin: EdgeInsets.only(top: 40, left: 50),
                             padding: EdgeInsets.all(25),
                             height: 300,
                             width: 190,
@@ -264,7 +266,7 @@ class _LearningState extends State<Learning>
                         children: [
                           Container(
                             margin:
-                                EdgeInsets.only(top: 40, left: 40, right: 20),
+                                EdgeInsets.only(top: 40, left: 50, right: 25),
                             padding: EdgeInsets.all(25),
                             height: 300,
                             width: 190,

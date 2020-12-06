@@ -6,6 +6,7 @@ class Intermediate extends StatefulWidget {
 }
 
 class _IntermediateState extends State<Intermediate> {
+  List dataSoalOk;
   var counter = 0;
 
   List qList = [
@@ -17,7 +18,8 @@ class _IntermediateState extends State<Intermediate> {
     Questions("6.Atomic bombs work by atomic fission.", true),
     Questions("7.Molecules are chemically bonded.", true),
     Questions("8.Spiders have six legs.", false),
-    Questions("9.Mount Kilimanjaro is the tallest mountain in the world.", false),
+    Questions(
+        "9.Mount Kilimanjaro is the tallest mountain in the world.", false),
     Questions("10.The study of plants is known as botany.", true),
   ];
 
@@ -51,24 +53,19 @@ class _IntermediateState extends State<Intermediate> {
     });
   }
 
-  // List datadariJSON;
+  void dataSoal() {
+    getAnswersBegin().then((value) {
+      setState(() {
+        dataSoalOk = value;
+      });
+    });
+  }
 
-  // Future ambildata() async {
-  //   http.Response hasil = await http.get(
-  //     Uri.encodeFull("https://al-quran-8d642.firebaseio.com/data.json?print=pretty"),
-  //       headers: {"Accept": "application/json"}
-  //   );
-
-  //   this.setState(() {
-  //     datadariJSON = json.decode(hasil.body);
-  //   });
-  // }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   this.ambildata();
-  // }
+  @override
+  void initState() {
+    super.initState();
+    dataSoal();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -263,7 +260,8 @@ class _IntermediateState extends State<Intermediate> {
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
                                       RaisedButton(
-                                        onPressed:()=> checkWin(true, context),
+                                        onPressed: () =>
+                                            checkWin(true, context),
                                         color: Colors.orangeAccent,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
@@ -279,7 +277,8 @@ class _IntermediateState extends State<Intermediate> {
                                         ),
                                       ),
                                       RaisedButton(
-                                        onPressed: () => checkWin(false, context),
+                                        onPressed: () =>
+                                            checkWin(false, context),
                                         color: Colors.orangeAccent,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:

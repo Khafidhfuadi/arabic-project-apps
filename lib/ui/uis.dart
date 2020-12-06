@@ -11,9 +11,10 @@ import 'package:flutter/cupertino.dart';
 // import 'package:http/http.dart' as http;
 import 'package:hexcolor/hexcolor.dart';
 // import 'dart:convert';
+import 'dart:math';
 import 'dart:async';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
-import 'package:quiz_view/quiz_view.dart';
+// import 'package:quiz_view/quiz_view.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 
 part 'bottomnavigation.dart';
@@ -22,9 +23,7 @@ part 'bottomnavigation.dart';
 part 'quiz/quiz.dart';
 // Beginner
 part 'quiz/beginner/beginner.dart';
-part 'quiz/beginner/beginner_question.dart';
-part 'quiz/beginner/beginner_answer.dart';
-part 'quiz/beginner/beginner_result.dart';
+part 'quiz/beginner/beginner_quiz.dart';
 part 'quiz/beginner/beginner_confirm.dart';
 // Intermediate
 part 'quiz/intermediate/intermediate.dart';

@@ -37,10 +37,12 @@ class _SphScreenState extends State<SphScreen> with TickerProviderStateMixin {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: AnimatedSplashScreen(
-        splash: Image.asset("assets/image/backapp.png"),
+        splash: Image.asset("assets/image/launcher.png"),
         nextScreen: MyApp(),
-        splashTransition: SplashTransition.slideTransition,
-        duration: 1000,
+        splashIconSize: 500,
+        curve: Curves.fastOutSlowIn,
+        splashTransition: SplashTransition.scaleTransition,
+        duration: 400,
       ),
     );
   }

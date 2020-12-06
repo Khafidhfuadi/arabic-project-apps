@@ -7,6 +7,8 @@ class Beginner extends StatefulWidget {
 
 class _BeginnerState extends State<Beginner> {
   List dataSoalOk;
+  List dataJawabanOk;
+  var counter = 0;
 
   void dataSoal() {
     getSoalBegin().then((value) {
@@ -16,10 +18,19 @@ class _BeginnerState extends State<Beginner> {
     });
   }
 
+  void dataJawaban() {
+    getAnswersBegin().then((value) {
+      setState(() {
+        dataJawabanOk = value;
+      });
+    });
+  }
+
   @override
   void initState() {
     super.initState();
     dataSoal();
+    dataJawaban();
   }
 
   @override
@@ -82,7 +93,7 @@ class _BeginnerState extends State<Beginner> {
                       color: Colors.greenAccent,
                     ))
                   : Container(
-                      height: 550,
+                      height: 600,
                       padding: const EdgeInsets.only(left: 12),
                       child: Swiper(
                         itemCount: dataSoalOk.length,
@@ -101,26 +112,31 @@ class _BeginnerState extends State<Beginner> {
                               children: <Widget>[
                                 Column(
                                   children: <Widget>[
-                                    SizedBox(height: 60),
+                                    SizedBox(height: 40),
                                     Container(
                                         child: QuizView(
                                             image: Container(
-                                                child: Image.network(
-                                                    "https://steamcdn-a.akamaihd.net/apps/csgo/images/brokenfang/control/control_04_usps.png",
-                                                    height: 100)),
+                                              child: Image.asset(
+                                                  "assets/icon/${dataSoalOk[i].gambar}",
+                                                  height: 110),
+                                            ),
                                             showCorrect: true,
                                             tagColor: Colors.black,
-                                            questionTag: "1",
+                                            questionTag:
+                                                dataSoalOk[i].soal + ".",
                                             answerColor: Colors.white,
                                             answerBackgroundColor: Colors.green,
                                             questionColor: Colors.black,
                                             backgroundColor: Colors.white,
                                             width: 420,
-                                            height: 450,
+                                            height: 510,
                                             question: dataSoalOk[i].bahasaIndo,
                                             rightAnswer:
                                                 dataSoalOk[i].bahasaArab,
-                                            wrongAnswers: ["Torque", "Fade"],
+                                            wrongAnswers: [
+                                              dataJawabanOk[i].jawabanSalah1,
+                                              dataJawabanOk[i].jawabanSalah2
+                                            ],
                                             onRightAnswer: () => showToast(
                                                 'Benar',
                                                 backgroundColor:
@@ -151,11 +167,17 @@ class _BeginnerState extends State<Beginner> {
                                                 'Salah',
                                                 backgroundColor:
                                                     Colors.red[400],
-                                                textStyle:
-                                                    TextStyle(color: Colors.white, fontFamily: 'Avenir', fontWeight: FontWeight.w500),
+                                                textStyle: TextStyle(
+                                                    color: Colors.white,
+                                                    fontFamily: 'Avenir',
+                                                    fontWeight:
+                                                        FontWeight.w500),
                                                 context: context,
-                                                animation: StyledToastAnimation.slideFromBottom,
-                                                reverseAnimation: StyledToastAnimation.slideToBottom,
+                                                animation: StyledToastAnimation
+                                                    .slideFromBottom,
+                                                reverseAnimation:
+                                                    StyledToastAnimation
+                                                        .slideToBottom,
                                                 startOffset: Offset(0.0, 3.0),
                                                 reverseEndOffset: Offset(0.0, 3.0),
                                                 position: StyledToastPosition.bottom,
