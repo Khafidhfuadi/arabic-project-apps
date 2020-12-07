@@ -11,8 +11,8 @@ class _QuizState extends State<Quiz> with SingleTickerProviderStateMixin {
 
   @override
   void initState() {
-    _animController = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 1500));
+    _animController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
     _animation = Tween(begin: 0.0, end: 1.0).animate(_animController);
     _animController.forward();
     super.initState();
@@ -128,135 +128,213 @@ class _QuizState extends State<Quiz> with SingleTickerProviderStateMixin {
                               .animate(_animController),
                       child: ListView(
                         children: [
-                          InkWell(
-                            onTap: () {},
-                            child: Container(
-                              padding: EdgeInsets.symmetric(vertical: 7),
-                              margin: EdgeInsets.only(right: 100),
-                              decoration: BoxDecoration(
+                          Container(
+                            margin: EdgeInsets.only(right: 100),
+                            child: RaisedButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/begconfirm');
+                              },
+                              shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.only(
                                       topRight: Radius.circular(60),
-                                      bottomRight: Radius.circular(60)),
+                                      bottomRight: Radius.circular(60))),
+                              padding: EdgeInsets.all(0.0),
+                              child: Ink(
+                                decoration: BoxDecoration(
                                   gradient: LinearGradient(
                                       begin: Alignment.centerLeft,
                                       colors: [
                                         Colors.green[600],
                                         Colors.green[600],
                                         Colors.green[200]
-                                      ])),
-                              child: ListTile(
-                                onTap: () {
-                                  Navigator.pushNamed(context, '/begconfirm');
-                                },
-                                subtitle: Text("Untuk 6-11 Tahun",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 13,
-                                        color: Colors.white,
-                                        fontFamily: 'Mont')),
-                                title: Text(
-                                  "Beginner",
-                                  style: TextStyle(
-                                      fontSize: 23,
-                                      color: Colors.white,
-                                      fontFamily: 'Mont'),
+                                      ]),
+                                  borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(60),
+                                      bottomRight: Radius.circular(60)),
                                 ),
-                                trailing: Icon(Icons.stars, size: 45),
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 20),
+                                child: Container(
+                                    constraints: const BoxConstraints(
+                                        minWidth: 88.0,
+                                        minHeight:
+                                            100.0), // min sizes for Material buttons
+                                    alignment: Alignment.center,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                            margin: EdgeInsets.only(left: 20),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "Beginner",
+                                                  style: TextStyle(
+                                                      fontSize: 23,
+                                                      color: Colors.white,
+                                                      fontFamily: 'Mont'),
+                                                ),
+                                                Text("Untuk 6-11 Tahun",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 13,
+                                                        color: Colors.white,
+                                                        fontFamily: 'Mont')),
+                                              ],
+                                            )),
+                                        Container(
+                                          margin: EdgeInsets.only(right: 20),
+                                          child: Icon(Icons.stars, size: 45),
+                                        ),
+                                      ],
+                                    )),
                               ),
                             ),
                           ),
                           SizedBox(height: 20),
-                          InkWell(
-                            splashColor: Colors.brown[300],
-                            child: Container(
-                              padding: EdgeInsets.symmetric(vertical: 7),
-                              margin: EdgeInsets.only(right: 100),
-                              decoration: BoxDecoration(
+                          Container(
+                            margin: EdgeInsets.only(right: 100),
+                            child: RaisedButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/inconfirm');
+                              },
+                              shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.only(
                                       topRight: Radius.circular(60),
-                                      bottomRight: Radius.circular(60)),
+                                      bottomRight: Radius.circular(60))),
+                              padding: EdgeInsets.all(0.0),
+                              child: Ink(
+                                decoration: BoxDecoration(
                                   gradient: LinearGradient(
                                       begin: Alignment.centerLeft,
                                       colors: [
                                         Colors.orange[400],
                                         Colors.orange[400],
                                         Colors.orange[200]
-                                      ])),
-                              child: ListTile(
-                                onTap: () {
-                                  Navigator.pushNamed(context, '/inconfirm');
-                                },
-                                subtitle: Text("Untuk 12-15 Tahun",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 13,
-                                        color: Colors.white,
-                                        fontFamily: 'Mont')),
-                                title: Text(
-                                  "Intermediate",
-                                  style: TextStyle(
-                                      fontSize: 23,
-                                      color: Colors.white,
-                                      fontFamily: 'Mont'),
+                                      ]),
+                                  borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(60),
+                                      bottomRight: Radius.circular(60)),
                                 ),
-                                trailing: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Icon(Icons.stars, size: 45),
-                                    Icon(Icons.stars, size: 45)
-                                  ],
-                                ),
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 20),
+                                child: Container(
+                                    constraints: const BoxConstraints(
+                                        minWidth: 88.0,
+                                        minHeight:
+                                            100.0), // min sizes for Material buttons
+                                    alignment: Alignment.center,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                            margin: EdgeInsets.only(left: 20),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "Intermediate",
+                                                  style: TextStyle(
+                                                      fontSize: 23,
+                                                      color: Colors.white,
+                                                      fontFamily: 'Mont'),
+                                                ),
+                                                Text("Untuk 12-15 Tahun",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 13,
+                                                        color: Colors.white,
+                                                        fontFamily: 'Mont')),
+                                              ],
+                                            )),
+                                        Container(
+                                          margin: EdgeInsets.only(right: 20),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Icon(Icons.stars, size: 45),
+                                              Icon(Icons.stars, size: 45)
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    )),
                               ),
                             ),
                           ),
                           SizedBox(height: 20),
-                          InkWell(
-                            splashColor: Colors.brown[300],
-                            child: Container(
-                              padding: EdgeInsets.symmetric(vertical: 7),
-                              margin: EdgeInsets.only(right: 100),
-                              decoration: BoxDecoration(
+                          Container(
+                            margin: EdgeInsets.only(right: 100),
+                            child: RaisedButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/inadvance');
+                              },
+                              shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.only(
                                       topRight: Radius.circular(60),
-                                      bottomRight: Radius.circular(60)),
+                                      bottomRight: Radius.circular(60))),
+                              padding: EdgeInsets.all(0.0),
+                              child: Ink(
+                                decoration: BoxDecoration(
                                   gradient: LinearGradient(
                                       begin: Alignment.centerLeft,
                                       colors: [
                                         Colors.red[400],
                                         Colors.red[400],
                                         Colors.red[200]
-                                      ])),
-                              child: ListTile(
-                                onTap: () {
-                                  Navigator.pushNamed(context, '/inadvance');
-                                },
-                                subtitle: Text("16 Tahun ke Atas",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 13,
-                                        color: Colors.white,
-                                        fontFamily: 'Mont')),
-                                title: Text(
-                                  "Advance",
-                                  style: TextStyle(
-                                      fontSize: 23,
-                                      color: Colors.white,
-                                      fontFamily: 'Mont'),
+                                      ]),
+                                  borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(60),
+                                      bottomRight: Radius.circular(60)),
                                 ),
-                                trailing: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Icon(Icons.stars, size: 45),
-                                    Icon(Icons.stars, size: 45),
-                                    Icon(Icons.stars, size: 45),
-                                  ],
-                                ),
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 20),
+                                child: Container(
+                                    constraints: const BoxConstraints(
+                                        minWidth: 88.0,
+                                        minHeight:
+                                            100.0), // min sizes for Material buttons
+                                    alignment: Alignment.center,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                            margin: EdgeInsets.only(left: 20),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "Advance",
+                                                  style: TextStyle(
+                                                      fontSize: 23,
+                                                      color: Colors.white,
+                                                      fontFamily: 'Mont'),
+                                                ),
+                                                Text("16 Tahun ke Atas",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 13,
+                                                        color: Colors.white,
+                                                        fontFamily: 'Mont')),
+                                              ],
+                                            )),
+                                        Container(
+                                          margin: EdgeInsets.only(right: 20),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Icon(Icons.stars, size: 45),
+                                              Icon(Icons.stars, size: 45),
+                                              Icon(Icons.stars, size: 45)
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    )),
                               ),
                             ),
                           ),

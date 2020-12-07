@@ -6,12 +6,12 @@ class Screen extends StatefulWidget {
 }
 
 class _ScreenState extends State<Screen> {
-  int _currentIndex = 0;
+  int _currentPage = 0;
   final List<Widget> _children = [Quiz(), Learning(), Account()];
 
   void onTabTapped(int index) {
     setState(() {
-      _currentIndex = index;
+      _currentPage = index;
     });
   }
 
@@ -19,17 +19,34 @@ class _ScreenState extends State<Screen> {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return Scaffold(
-      body: _children[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: onTabTapped,
-        currentIndex: _currentIndex,
+      body: _children[_currentPage],
+      bottomNavigationBar: FFNavigationBar(
+        theme: FFNavigationBarTheme(
+            barBackgroundColor: Colors.white,
+            selectedItemBorderColor: Colors.yellow[700],
+            selectedItemBackgroundColor: Colors.yellow[700],
+            selectedItemIconColor: Colors.white,
+            selectedItemLabelColor: Colors.black,
+            barHeight: 70),
+        selectedIndex: _currentPage,
+        onSelectTab: (index) {
+          setState(() {
+            _currentPage = index;
+          });
+        },
         items: [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.question_answer), title: Text("Quiz")),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.border_color), title: Text("Learning")),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle), title: Text("Account")),
+          FFNavigationBarItem(
+            iconData: Icons.question_answer,
+            label: 'Quiz',
+          ),
+          FFNavigationBarItem(
+            iconData: Icons.border_color,
+            label: 'Learning',
+          ),
+          FFNavigationBarItem(
+            iconData: Icons.account_circle,
+            label: 'Account',
+          ),
         ],
       ),
     );

@@ -17,14 +17,23 @@ class MyApp extends StatelessWidget {
             visualDensity: VisualDensity.adaptivePlatformDensity),
         initialRoute: '/',
         routes: {
+          // HOME
           '/': (context) => Screen(),
+          // QUIZ
+          // BEGINNER
           '/begconfirm': (context) => Begconfirm(),
           '/beginner': (context) => Beginner(),
+          // INTERMEDIATE
           '/inconfirm': (context) => Inconfirm(),
           '/intermediate': (context) => Intermediate(),
+          // ADVANCE
           '/inadvance': (context) => Inadvance(),
           '/advsession': (context) => Advsession(),
           '/advance': (context) => Advance(),
+          // LEARNING
+          // BEGINNER
+          '/beginlearn': (context) => BeginLearn(),
+          '/interlearn': (context) => InterLearn(),
         });
   }
 }

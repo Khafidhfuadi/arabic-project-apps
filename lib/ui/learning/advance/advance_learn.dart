@@ -1,11 +1,11 @@
 part of '../../uis.dart';
 
-class BeginLearn extends StatefulWidget {
+class AdvanceLearn extends StatefulWidget {
   @override
-  _BeginLearnState createState() => _BeginLearnState();
+  _AdvanceLearnState createState() => _AdvanceLearnState();
 }
 
-class _BeginLearnState extends State<BeginLearn> {
+class _AdvanceLearnState extends State<AdvanceLearn> {
   PageController _controller = PageController(
     initialPage: 0,
   );
@@ -23,33 +23,16 @@ class _BeginLearnState extends State<BeginLearn> {
     return Scaffold(
         backgroundColor: HexColor("#089467"),
         body: ScrollConfiguration(
-          behavior: BeginScroll(),
-          child: Stack(
-            children: [
-              PageView(
-                controller: _controller,
-                children: <Widget>[TitleBegin(), IntroBegin(), TableBegin()],
-              ),
-              Container(
-                  alignment: Alignment.bottomLeft,
-                  margin: EdgeInsets.only(left: 20, bottom: 40),
-                  child: FloatingActionButton(
-                    backgroundColor: HexColor("#089467"),
-                    foregroundColor: Colors.white,
-                    splashColor: Colors.white38,
-                    tooltip: "Back | To Learning Page",
-                    onPressed: () {
-                      Navigator.of(context).popUntil((route) => route.isFirst);
-                    },
-                    child: Icon(Icons.arrow_back),
-                  ))
-            ],
+          behavior: AdvanceScroll(),
+          child: PageView(
+            controller: _controller,
+            children: <Widget>[TitleAdvance(), IntroAdvance(), TableAdvance()],
           ),
         ));
   }
 }
 
-class TitleBegin extends StatelessWidget {
+class TitleAdvance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -113,7 +96,7 @@ class TitleBegin extends StatelessWidget {
   }
 }
 
-class IntroBegin extends StatelessWidget {
+class IntroAdvance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -236,7 +219,7 @@ class IntroBegin extends StatelessWidget {
   }
 }
 
-class TableBegin extends StatelessWidget {
+class TableAdvance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -369,7 +352,7 @@ class TableBegin extends StatelessWidget {
   }
 }
 
-class BeginScroll extends ScrollBehavior {
+class AdvanceScroll extends ScrollBehavior {
   @override
   Widget buildViewportChrome(
       BuildContext context, Widget child, AxisDirection axisDirection) {

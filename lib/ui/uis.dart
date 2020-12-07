@@ -13,9 +13,10 @@ import 'package:hexcolor/hexcolor.dart';
 // import 'dart:convert';
 import 'dart:math';
 import 'dart:async';
-import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 // import 'package:quiz_view/quiz_view.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
+import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 
 part 'bottomnavigation.dart';
 
@@ -36,6 +37,9 @@ part 'quiz/advance/advance.dart';
 
 // Learning
 part 'learning/learning.dart';
+part 'learning/beginner/beginner_learn.dart';
+part 'learning/intermediate/inter_learn.dart';
+part 'learning/advance/advance_learn.dart';
 
 // Account
 part 'account/account.dart';

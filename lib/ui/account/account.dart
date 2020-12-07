@@ -12,8 +12,8 @@ class _AccountState extends State<Account> with SingleTickerProviderStateMixin {
 
   @override
   void initState() {
-    _animController = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 1500));
+    _animController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 200));
     _animation = Tween(begin: 0.0, end: 1.0).animate(_animController);
     _animController.forward();
     super.initState();
@@ -136,8 +136,6 @@ class _AccountState extends State<Account> with SingleTickerProviderStateMixin {
                                     ],
                                   ),
                                   Container(
-                                      height: 80,
-                                      width: 80,
                                       margin: EdgeInsets.only(left: 40),
                                       color: Colors.white,
                                       child: CustomProgressIndicator()),
@@ -149,195 +147,191 @@ class _AccountState extends State<Account> with SingleTickerProviderStateMixin {
               ],
             ),
           ),
-          FadeTransition(
-            opacity: _animation,
-            child: Container(
-                child: Column(
-              children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.only(left: 15, right: 15, bottom: 20),
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 20,
-                        child: Stack(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: kDefaultPadding / 10),
-                              child: Text(
-                                "User Account Settings",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w700,
-                                    fontFamily: 'Avenir'),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                    child: Column(
+          Container(
+              child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 15, right: 15, bottom: 20),
+                child: Row(
                   children: [
                     Container(
-                      decoration: BoxDecoration(
-                          border: Border(
-                              top: BorderSide(color: Colors.grey[300]),
-                              bottom: BorderSide(color: Colors.grey[300]))),
-                      child: ListTile(
-                        onTap: () {},
-                        leading: Icon(
-                          Icons.mail_outline,
-                          color: Colors.brown,
-                          size: 30,
-                        ),
-                        title: Text("Change Email Address",
-                            style: TextStyle(
-                                color: Colors.grey[600],
-                                fontFamily: "Mont",
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12)),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(color: Colors.grey[300]))),
-                      child: ListTile(
-                        onTap: () {},
-                        leading: Icon(
-                          Icons.mode_edit,
-                          color: Colors.blueAccent,
-                          size: 30,
-                        ),
-                        title: Text("Edit Your Account",
-                            style: TextStyle(
-                                color: Colors.grey[600],
-                                fontFamily: "Mont",
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12)),
+                      height: 20,
+                      child: Stack(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: kDefaultPadding / 10),
+                            child: Text(
+                              "User Account Settings",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: 'Avenir'),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
-                )),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 20,
-                        child: Stack(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: kDefaultPadding / 10),
-                              child: Text(
-                                "General Section",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w700,
-                                    fontFamily: 'Avenir'),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
                 ),
-                Container(
-                    child: Column(
+              ),
+              Container(
+                  child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border(
+                            top: BorderSide(color: Colors.grey[300]),
+                            bottom: BorderSide(color: Colors.grey[300]))),
+                    child: ListTile(
+                      onTap: () {},
+                      leading: Icon(
+                        Icons.mail_outline,
+                        color: Colors.brown,
+                        size: 30,
+                      ),
+                      title: Text("Change Email Address",
+                          style: TextStyle(
+                              color: Colors.grey[600],
+                              fontFamily: "Mont",
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12)),
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(color: Colors.grey[300]))),
+                    child: ListTile(
+                      onTap: () {},
+                      leading: Icon(
+                        Icons.mode_edit,
+                        color: Colors.blueAccent,
+                        size: 30,
+                      ),
+                      title: Text("Edit Your Account",
+                          style: TextStyle(
+                              color: Colors.grey[600],
+                              fontFamily: "Mont",
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12)),
+                    ),
+                  ),
+                ],
+              )),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                child: Row(
                   children: [
                     Container(
-                      decoration: BoxDecoration(
-                          border: Border(
-                              top: BorderSide(color: Colors.grey[300]),
-                              bottom: BorderSide(color: Colors.grey[300]))),
-                      child: SwitchListTile(
-                        title: Text('Notification Sound',
-                            style: TextStyle(
-                                color: Colors.grey[600],
-                                fontFamily: "Mont",
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12)),
-                        value: _lights,
-                        onChanged: (bool value) {
-                          setState(() {
-                            _lights = value;
-                          });
-                        },
-                        secondary: Icon(
-                          Icons.notifications_none,
-                          color: Colors.purple,
-                          size: 30,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(color: Colors.grey[300]))),
-                      child: ListTile(
-                        onTap: () {},
-                        leading: Icon(
-                          Icons.share,
-                          color: Colors.green,
-                          size: 30,
-                        ),
-                        title: Text("Share this App",
-                            style: TextStyle(
-                                color: Colors.grey[600],
-                                fontFamily: "Mont",
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12)),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(color: Colors.grey[300]))),
-                      child: ListTile(
-                        onTap: () {},
-                        leading: Icon(
-                          Icons.repeat,
-                          color: Colors.red,
-                          size: 30,
-                        ),
-                        title: Text("Reset All My Progress",
-                            style: TextStyle(
-                                color: Colors.grey[600],
-                                fontFamily: "Mont",
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12)),
-                      ),
-                    ),
-                    Ink(
-                      color: Colors.red[400],
-                      child: ListTile(
-                        onTap: () {},
-                        leading: Icon(
-                          Icons.delete,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                        title: Text("Delete My Account",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: "Mont",
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12)),
+                      height: 20,
+                      child: Stack(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: kDefaultPadding / 10),
+                            child: Text(
+                              "General Section",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: 'Avenir'),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
-                )),
-              ],
-            )),
-          )
+                ),
+              ),
+              Container(
+                  child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border(
+                            top: BorderSide(color: Colors.grey[300]),
+                            bottom: BorderSide(color: Colors.grey[300]))),
+                    child: SwitchListTile(
+                      title: Text('Notification Sound',
+                          style: TextStyle(
+                              color: Colors.grey[600],
+                              fontFamily: "Mont",
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12)),
+                      value: _lights,
+                      onChanged: (bool value) {
+                        setState(() {
+                          _lights = value;
+                        });
+                      },
+                      secondary: Icon(
+                        Icons.notifications_none,
+                        color: Colors.purple,
+                        size: 30,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(color: Colors.grey[300]))),
+                    child: ListTile(
+                      onTap: () {},
+                      leading: Icon(
+                        Icons.share,
+                        color: Colors.green,
+                        size: 30,
+                      ),
+                      title: Text("Share this App",
+                          style: TextStyle(
+                              color: Colors.grey[600],
+                              fontFamily: "Mont",
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12)),
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(color: Colors.grey[300]))),
+                    child: ListTile(
+                      onTap: () {},
+                      leading: Icon(
+                        Icons.repeat,
+                        color: Colors.red,
+                        size: 30,
+                      ),
+                      title: Text("Reset All My Progress",
+                          style: TextStyle(
+                              color: Colors.grey[600],
+                              fontFamily: "Mont",
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12)),
+                    ),
+                  ),
+                  Ink(
+                    color: Colors.red[400],
+                    child: ListTile(
+                      onTap: () {},
+                      leading: Icon(
+                        Icons.delete,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      title: Text("Delete My Account",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: "Mont",
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12)),
+                    ),
+                  ),
+                ],
+              )),
+            ],
+          )),
         ],
       ),
     );
@@ -351,43 +345,40 @@ class CustomProgressIndicator extends StatefulWidget {
 }
 
 class _CustomProgressIndicatorState extends State<CustomProgressIndicator> {
-  double percent = 0.0;
+  // double percent = 0.0;
 
-  @override
-  void initState() {
-    Timer timer;
-    timer = Timer.periodic(Duration(milliseconds: 100), (_) {
-      print('Percent Update');
-      setState(() {
-        percent += 1;
-        if (percent >= 50) {
-          timer.cancel();
-          // percent=0;
-        }
-      });
-    });
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   Timer timer;
+  //   timer = Timer.periodic(Duration(milliseconds: 100), (_) {
+  //     print('Percent Update');
+  //     setState(() {
+  //       percent += 1;
+  //       if (percent >= 50) {
+  //         timer.cancel();
+  //         // percent=0;
+  //       }
+  //     });
+  //   });
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: LiquidCircularProgressIndicator(
-        value: percent / 100,
-        valueColor: AlwaysStoppedAnimation(Colors.blue),
-        backgroundColor: Colors.grey[100],
-        borderColor: Colors.grey[200],
-        borderWidth: 4.0,
-        direction: Axis.vertical,
-        center: Text(
-          percent.toString() + "%",
-          style: TextStyle(
-              fontSize: 10.0,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-              fontFamily: "Avenir"),
-        ),
+        child: CircularPercentIndicator(
+      radius: 80.0,
+      lineWidth: 10.0,
+      animation: true,
+      percent: 0.7,
+      center: new Text(
+        "70.0%",
+        style: new TextStyle(
+            fontWeight: FontWeight.bold, fontSize: 12.0, fontFamily: "Avenir"),
       ),
-    );
+      circularStrokeCap: CircularStrokeCap.round,
+      progressColor: Colors.green,
+      backgroundColor: Colors.grey[200],
+    ));
   }
 }
