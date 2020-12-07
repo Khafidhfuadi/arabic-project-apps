@@ -7,11 +7,11 @@ Future getSoalAdvan() async {
         headers: {"Accept": "application/json"});
 
     if (hasil.statusCode == 200) {
-      print("Sukses menampilkan soal");
+      print("Sukses menampilkan soal Advance");
       final data = advanceModelFromJson(hasil.body);
       return data;
     } else {
-      print("Gagal menampilkan soal");
+      print("Gagal menampilkan soal Advance");
       return null;
     }
   } catch (e) {

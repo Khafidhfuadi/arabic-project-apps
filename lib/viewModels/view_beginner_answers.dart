@@ -7,11 +7,11 @@ Future getAnswersBegin() async {
         headers: {"Accept": "application/json"});
 
     if (hasil.statusCode == 200) {
-      print("Sukses menampilkan jawaban");
+      print("Sukses menampilkan jawaban Beginer");
       final data = beginerAnswerFromJson(hasil.body);
       return data;
     } else {
-      print("Gagal menampilkan jawaban");
+      print("Gagal menampilkan jawaban Beginer");
       return null;
     }
   } catch (e) {
