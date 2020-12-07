@@ -88,7 +88,7 @@ class _QuizViewState extends State<QuizView> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [],
     );
-for (String i in widget.wrongAnswers) {
+    for (String i in widget.wrongAnswers) {
       answerColumn.children.add(Container(
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.all(15),
@@ -153,7 +153,7 @@ for (String i in widget.wrongAnswers) {
             },
           ),
         ));
-return Container(
+    return Container(
         decoration: BoxDecoration(
             color: widget.backgroundColor,
             borderRadius: BorderRadius.all(Radius.circular(
@@ -191,8 +191,8 @@ return Container(
                             fontWeight: FontWeight.bold,
                             fontFamily: "Avenir",
                             fontSize: widget.width > widget.height
-                                ? widget.width / 15
-                                : widget.height / 15),
+                                ? widget.width / 12
+                                : widget.height / 12),
                       ),
                     ),
                   ),
@@ -237,7 +237,7 @@ return Container(
                                             color: widget.questionColor,
                                             fontWeight: FontWeight.bold,
                                             fontSize:
-widget.width > widget.height
+                                                widget.width > widget.height
                                                     ? widget.width / 20
                                                     : widget.height / 20)),
                                   ),
