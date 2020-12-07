@@ -134,58 +134,71 @@ class _BeginnerState extends State<Beginner> {
                                             rightAnswer:
                                                 dataSoalOk[i].bahasaArab,
                                             wrongAnswers: [
-                                              dataJawabanOk[i].jawabanSalah1,
-                                              dataJawabanOk[i].jawabanSalah2
+                                              "dataJawabanOk[i].jawabanSalah1",
+                                              "dataJawabanOk[i].jawabanSalah2"
                                             ],
-                                            onRightAnswer: () => showToast(
-                                                'Benar',
-                                                backgroundColor:
-                                                    Colors.green[400],
-                                                textStyle: TextStyle(
-                                                    color: Colors.white,
-                                                    fontFamily: 'Avenir',
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                                context: context,
-                                                animation: StyledToastAnimation
-                                                    .slideFromBottom,
-                                                reverseAnimation: StyledToastAnimation
-                                                    .slideToBottom,
-                                                startOffset: Offset(0.0, 3.0),
-                                                reverseEndOffset:
-                                                    Offset(0.0, 3.0),
-                                                position:
-                                                    StyledToastPosition.bottom,
-                                                duration: Duration(seconds: 4),
-                                                //Animation duration   animDuration * 2 <= duration
-                                                animDuration:
-                                                    Duration(seconds: 1),
-                                                curve: Curves.elasticOut,
-                                                reverseCurve:
-                                                    Curves.fastOutSlowIn),
-                                            onWrongAnswer: () => showToast(
-                                                'Salah',
-                                                backgroundColor:
-                                                    Colors.red[400],
-                                                textStyle: TextStyle(
-                                                    color: Colors.white,
-                                                    fontFamily: 'Avenir',
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                                context: context,
-                                                animation: StyledToastAnimation
-                                                    .slideFromBottom,
-                                                reverseAnimation:
-                                                    StyledToastAnimation
-                                                        .slideToBottom,
-                                                startOffset: Offset(0.0, 3.0),
-                                                reverseEndOffset: Offset(0.0, 3.0),
-                                                position: StyledToastPosition.bottom,
-                                                duration: Duration(seconds: 4),
-                                                //Animation duration   animDuration * 2 <= duration
-                                                animDuration: Duration(seconds: 1),
-                                                curve: Curves.elasticOut,
-                                                reverseCurve: Curves.fastOutSlowIn)))
+                                            onRightAnswer: () {
+                                              print("hoki bener");
+                                              showToast('Benar',
+                                                  backgroundColor:
+                                                      Colors.green[400],
+                                                  textStyle: TextStyle(
+                                                      color: Colors.white,
+                                                      fontFamily: 'Avenir',
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                  context: context,
+                                                  animation:
+                                                      StyledToastAnimation
+                                                          .slideFromBottom,
+                                                  reverseAnimation:
+                                                      StyledToastAnimation
+                                                          .slideToBottom,
+                                                  startOffset: Offset(0.0, 3.0),
+                                                  reverseEndOffset:
+                                                      Offset(0.0, 3.0),
+                                                  position: StyledToastPosition
+                                                      .bottom,
+                                                  duration:
+                                                      Duration(seconds: 4),
+                                                  //Animation duration   animDuration * 2 <= duration
+                                                  animDuration:
+                                                      Duration(seconds: 1),
+                                                  curve: Curves.elasticOut,
+                                                  reverseCurve:
+                                                      Curves.fastOutSlowIn);
+                                            },
+                                            onWrongAnswer: () {
+                                              print("yah salah");
+                                              showToast('Salah',
+                                                  backgroundColor:
+                                                      Colors.red[400],
+                                                  textStyle: TextStyle(
+                                                      color: Colors.white,
+                                                      fontFamily: 'Avenir',
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                  context: context,
+                                                  animation:
+                                                      StyledToastAnimation
+                                                          .slideFromBottom,
+                                                  reverseAnimation:
+                                                      StyledToastAnimation
+                                                          .slideToBottom,
+                                                  startOffset: Offset(0.0, 3.0),
+                                                  reverseEndOffset:
+                                                      Offset(0.0, 3.0),
+                                                  position: StyledToastPosition
+                                                      .bottom,
+                                                  duration:
+                                                      Duration(seconds: 4),
+                                                  //Animation duration   animDuration * 2 <= duration
+                                                  animDuration:
+                                                      Duration(seconds: 1),
+                                                  curve: Curves.elasticOut,
+                                                  reverseCurve:
+                                                      Curves.fastOutSlowIn);
+                                            }))
                                   ],
                                 ),
                                 Positioned(
@@ -215,3 +228,60 @@ class _BeginnerState extends State<Beginner> {
     );
   }
 }
+
+// QuizView(
+//                                             image: Container(
+//                                               child: Image.asset(
+//                                                   "assets/icon/${dataSoalOk[i].gambar}",
+//                                                   height: 110),
+//                                             ),
+//                                             showCorrect: true,
+//                                             tagColor: Colors.black,
+//                                             questionTag:
+//                                                 dataSoalOk[i].soal + ".",
+//                                             answerColor: Colors.white,
+//                                             answerBackgroundColor: Colors.green,
+//                                             questionColor: Colors.black,
+//                                             backgroundColor: Colors.white,
+//                                             width: 420,
+//                                             height: 510,
+//                                             question: dataSoalOk[i].bahasaIndo,
+//                                             rightAnswer:
+//                                                 dataSoalOk[i].bahasaArab,
+//                                             wrongAnswers: [
+//                                               dataJawabanOk[i].jawabanSalah1,
+//                                               dataJawabanOk[i].jawabanSalah2
+//                                             ],
+//                                             )
+
+// onRightAnswer: () {
+//                                               print("hoki lu bener");
+//                                               showToast('Benar',
+//                                                   backgroundColor:
+//                                                       Colors.green[400],
+//                                                   textStyle: TextStyle(
+//                                                       color: Colors.white,
+//                                                       fontFamily: 'Avenir',
+//                                                       fontWeight:
+//                                                           FontWeight.w500),
+//                                                   context: context,
+//                                                   animation:
+//                                                       StyledToastAnimation
+//                                                           .slideFromBottom,
+//                                                   reverseAnimation:
+//                                                       StyledToastAnimation
+//                                                           .slideToBottom,
+//                                                   startOffset: Offset(0.0, 3.0),
+//                                                   reverseEndOffset:
+//                                                       Offset(0.0, 3.0),
+//                                                   position: StyledToastPosition
+//                                                       .bottom,
+//                                                   duration:
+//                                                       Duration(seconds: 4),
+//                                                   //Animation duration   animDuration * 2 <= duration
+//                                                   animDuration:
+//                                                       Duration(seconds: 1),
+//                                                   curve: Curves.elasticOut,
+//                                                   reverseCurve:
+//                                                       Curves.fastOutSlowIn);
+//                                             },

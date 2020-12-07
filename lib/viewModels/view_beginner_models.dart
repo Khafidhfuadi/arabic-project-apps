@@ -7,11 +7,11 @@ Future getSoalBegin() async {
         headers: {"Accept": "application/json"});
 
     if (hasil.statusCode == 200) {
-      print("Sukses menampilkan soal");
+      print("Sukses menampilkan soal Beginer");
       final data = beginnerModelFromJson(hasil.body);
       return data;
     } else {
-      print("Gagal menampilkan soal");
+      print("Gagal menampilkan soal Beginer");
       return null;
     }
   } catch (e) {

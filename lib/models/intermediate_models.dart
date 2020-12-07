@@ -1,4 +1,4 @@
-part of 'models.dart';
+part of "models.dart";
 
 List<IntermediateModel> intermediateModelFromJson(String str) => List<IntermediateModel>.from(json.decode(str).map((x) => IntermediateModel.fromJson(x)));
 
@@ -19,7 +19,7 @@ class IntermediateModel {
     String soal;
     String bahasaArab;
     String bahasaIndo;
-    int value;
+    bool value;
     DateTime createdAt;
     DateTime updatedAt;
 

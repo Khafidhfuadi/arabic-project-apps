@@ -28,7 +28,7 @@ part 'quiz/beginner/beginner_confirm.dart';
 // Intermediate
 part 'quiz/intermediate/intermediate.dart';
 part 'quiz/intermediate/intermediate_confirm.dart';
-part 'quiz/intermediate/quizInter.dart';
+// part 'quiz/intermediate/quizInter.dart';
 // Advance
 part 'quiz/advance/advance_confirm.dart';
 part 'quiz/advance/advance_session.dart';

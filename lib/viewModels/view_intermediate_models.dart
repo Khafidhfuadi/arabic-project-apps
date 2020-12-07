@@ -7,11 +7,11 @@ Future getSoalInter() async {
         headers: {"Accept": "application/json"});
 
     if (hasil.statusCode == 200) {
-      print("Sukses menampilkan soal");
+      print("Sukses menampilkan soal Intermediate");
       final data = intermediateModelFromJson(hasil.body);
       return data;
     } else {
-      print("Gagal menampilkan soal");
+      print("Gagal menampilkan soal Intermediate");
       return null;
     }
   } catch (e) {

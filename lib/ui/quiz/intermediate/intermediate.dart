@@ -9,52 +9,8 @@ class _IntermediateState extends State<Intermediate> {
   List dataSoalOk;
   var counter = 0;
 
-  List qList = [
-    Questions("1.The human body has four lungs.", false),
-    Questions("2.Kelvin is a measure of temperature.", true),
-    Questions("3.The Atlantic Ocean is the biggest ocean on Earth.", false),
-    Questions("4.Sharks are mammals.", false),
-    Questions("5.The human skeleton is made up of less than 100 bones.", false),
-    Questions("6.Atomic bombs work by atomic fission.", true),
-    Questions("7.Molecules are chemically bonded.", true),
-    Questions("8.Spiders have six legs.", false),
-    Questions(
-        "9.Mount Kilimanjaro is the tallest mountain in the world.", false),
-    Questions("10.The study of plants is known as botany.", true),
-  ];
-
-  var score = 0;
-
-  checkWin(bool userChoice, BuildContext context) {
-    if (userChoice == qList[counter].isCorrect) {
-      print("correct");
-
-      score = score + 5;
-      final snackbar = SnackBar(
-        duration: Duration(milliseconds: 500),
-        backgroundColor: Colors.green,
-        content: Text("Correct!"),
-      );
-      Scaffold.of(context).showSnackBar(snackbar);
-    } else {
-      print("false");
-      score = score + 0;
-      final snackbar = SnackBar(
-        duration: Duration(milliseconds: 500),
-        backgroundColor: Colors.red,
-        content: Text("Incorrect!"),
-      );
-      Scaffold.of(context).showSnackBar(snackbar);
-    }
-    setState(() {
-      if (counter < 9) {
-        counter = counter + 1;
-      }
-    });
-  }
-
   void dataSoal() {
-    getAnswersBegin().then((value) {
+    getSoalInter().then((value) {
       setState(() {
         dataSoalOk = value;
       });
@@ -65,6 +21,44 @@ class _IntermediateState extends State<Intermediate> {
   void initState() {
     super.initState();
     dataSoal();
+  }
+
+  // List qList = [
+  //   Questions("1.The human body has four lungs.", false),
+  //   Questions("2.Kelvin is a measure of temperature.", true),
+  //   Questions("3.The Atlantic Ocean is the biggest ocean on Earth.", false),
+  //   Questions("4.Sharks are mammals.", false),
+  //   Questions("5.The human skeleton is made up of less than 100 bones.", false),
+  //   Questions("6.Atomic bombs work by atomic fission.", true),
+  //   Questions("7.Molecules are chemically bonded.", true),
+  //   Questions("8.Spiders have six legs.", false),
+  //   Questions("9.Mount Kilimanjaro is the tallest mountain in the world.", false),
+  //   Questions("10.The study of plants is known as botany.", true),
+  // ];
+
+  void checkWin(bool userChoice, BuildContext context, i) {
+    if (userChoice == dataSoalOk[i].value) {
+      print("correct");
+      final snackbar = SnackBar(
+        duration: Duration(milliseconds: 500),
+        backgroundColor: Colors.green,
+        content: Text("Correct!"),
+      );
+      Scaffold.of(context).showSnackBar(snackbar);
+    } else {
+      print("false");
+      final snackbar = SnackBar(
+        duration: Duration(milliseconds: 500),
+        backgroundColor: Colors.red,
+        content: Text("Correct!"),
+      );
+      Scaffold.of(context).showSnackBar(snackbar);
+    }
+    setState(() {
+      if (i < 9) {
+        counter = counter + 1;
+      }
+    });
   }
 
   @override
@@ -122,13 +116,13 @@ class _IntermediateState extends State<Intermediate> {
                   ],
                 ),
               ),
-              // datadariJSON == null
-              //     ? Center(child: SpinKitThreeBounce(color: Colors.orange[600])) :
+              dataSoalOk == null
+                  ? Center(child: SpinKitThreeBounce(color: Colors.orange[600])) :
               Container(
                 height: 550,
                 padding: const EdgeInsets.only(left: 12),
                 child: Swiper(
-                  itemCount: qList.length,
+                  itemCount: dataSoalOk.length,
                   itemWidth: MediaQuery.of(context).size.width - 2 * 25,
                   layout: SwiperLayout.STACK,
                   pagination: SwiperPagination(
@@ -137,7 +131,7 @@ class _IntermediateState extends State<Intermediate> {
                         space: 8,
                         activeColor: Colors.orange[600]),
                   ),
-                  itemBuilder: (context, i) {
+                  itemBuilder: (context, i,) {
                     return InkWell(
                       onTap: () {},
                       child: Stack(
@@ -161,42 +155,47 @@ class _IntermediateState extends State<Intermediate> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      // Text(
-                                      //   datadariJSON[i]['soal'] + ".",
-                                      //   style: TextStyle(
-                                      //     fontFamily: 'Avenir',
-                                      //     fontSize: 44,
-                                      //     color: const Color(0xff47455f),
-                                      //     fontWeight: FontWeight.w900,
-                                      //   ),
-                                      //   textAlign: TextAlign.left,
-                                      // ),
+                                      Text(
+                                        dataSoalOk[counter].soal + ".",
+                                        style: TextStyle(
+                                          fontFamily: 'Avenir',
+                                          fontSize: 44,
+                                          color: const Color(0xff47455f),
+                                          fontWeight: FontWeight.w900,
+                                        ),
+                                        textAlign: TextAlign.left,
+                                      ),
                                       SizedBox(height: 85),
-                                      // Row(
-                                      //   mainAxisAlignment:
-                                      //       MainAxisAlignment.center,
-                                      //   children: [
-                                      //     Text(
-                                      //       'Bahasa arabnya ',
-                                      //       style: TextStyle(
-                                      //           fontFamily: 'Mont',
-                                      //           fontSize: 18,
-                                      //           color: Colors.black,
-                                      //           fontWeight:
-                                      //               FontWeight.bold),
-                                      //     ),
-                                      //     Text(
-                                      //       datadariJSON[i]['bahasa_indo'],
-                                      //       style: TextStyle(
-                                      //           fontFamily: 'Mont',
-                                      //           fontSize: 18,
-                                      //           color: Colors.black,
-                                      //           fontWeight:
-                                      //               FontWeight.bold),
-                                      //     ),
-                                      //     SizedBox(width: 10),
-                                      //   ],
-                                      // ),
+                                      Center(
+                                        child: Text(
+                                            'Bahasa arabnya ',
+                                            style: TextStyle(
+                                                fontFamily: 'Mont',
+                                                fontSize: 18,
+                                                color: Colors.black,
+                                                fontWeight:
+                                                    FontWeight.bold),
+                                                    textAlign: TextAlign.left,
+                                          ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Center(
+                                            child: Text(
+                                              dataSoalOk[counter].bahasaIndo,
+                                              style: TextStyle(
+                                                  fontFamily: 'Mont',
+                                                  fontSize: 18,
+                                                  color: Colors.black,
+                                                  fontWeight:
+                                                      FontWeight.bold),
+                                            ),
+                                          ),
+                                          SizedBox(width: 10),
+                                        ],
+                                      ),
                                       Container(
                                           alignment: Alignment.center,
                                           margin: EdgeInsets.only(
@@ -216,7 +215,7 @@ class _IntermediateState extends State<Intermediate> {
                                             children: [
                                               Text(
                                                 // datadariJSON[i]['bahasa_arab'],
-                                                qList[counter].qText,
+                                                dataSoalOk[counter].bahasaArab,
                                                 style: TextStyle(
                                                   fontFamily: 'Arabic',
                                                   fontSize: 25,
@@ -261,7 +260,7 @@ class _IntermediateState extends State<Intermediate> {
                                     children: [
                                       RaisedButton(
                                         onPressed: () =>
-                                            checkWin(true, context),
+                                            checkWin(true, context, i),
                                         color: Colors.orangeAccent,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
@@ -278,7 +277,7 @@ class _IntermediateState extends State<Intermediate> {
                                       ),
                                       RaisedButton(
                                         onPressed: () =>
-                                            checkWin(false, context),
+                                            checkWin(false, context, i),
                                         color: Colors.orangeAccent,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
