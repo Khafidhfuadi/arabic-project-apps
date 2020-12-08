@@ -98,7 +98,9 @@ class TitleBegin extends StatelessWidget {
                     ))),
             SizedBox(height: 50),
             FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  MaterialPageRoute(builder: (context) => IntroBegin());
+                },
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(0),

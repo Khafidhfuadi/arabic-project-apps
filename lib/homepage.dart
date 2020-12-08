@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
         title: 'Bahasa Arab',
         theme: ThemeData(
             scaffoldBackgroundColor: kBackgorundColor,
-            primaryColor: HexColor("#000d3f"),
+            primaryColor: HexColor("#fab838"),
             textTheme: Theme.of(context).textTheme.apply(bodyColor: kTextColor),
             visualDensity: VisualDensity.adaptivePlatformDensity),
         initialRoute: '/',

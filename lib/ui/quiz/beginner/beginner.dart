@@ -7,7 +7,6 @@ class Beginner extends StatefulWidget {
 
 class _BeginnerState extends State<Beginner> {
   List dataSoalOk;
-  List dataJawabanOk;
   var counter = 0;
 
   void dataSoal() {
@@ -18,19 +17,10 @@ class _BeginnerState extends State<Beginner> {
     });
   }
 
-  void dataJawaban() {
-    getAnswersBegin().then((value) {
-      setState(() {
-        dataJawabanOk = value;
-      });
-    });
-  }
-
   @override
   void initState() {
     super.initState();
     dataSoal();
-    dataJawaban();
   }
 
   @override
@@ -117,25 +107,23 @@ class _BeginnerState extends State<Beginner> {
                                         child: QuizView(
                                             image: Container(
                                               child: Image.asset(
-                                                  "assets/icon/${dataSoalOk[i].gambar}",
+                                                  "assets/icon/beginnerquiz/${dataSoalOk[i].gambar}",
                                                   height: 110),
                                             ),
                                             showCorrect: true,
                                             tagColor: Colors.black,
-                                            questionTag:
-                                                dataSoalOk[i].soal + ".",
+                                            questionTag: dataSoalOk[i].no + ".",
                                             answerColor: Colors.white,
                                             answerBackgroundColor: Colors.green,
                                             questionColor: Colors.black,
                                             backgroundColor: Colors.white,
                                             width: 420,
                                             height: 510,
-                                            question: dataSoalOk[i].bahasaIndo,
-                                            rightAnswer:
-                                                dataSoalOk[i].bahasaArab,
+                                            question: dataSoalOk[i].soal,
+                                            rightAnswer: dataSoalOk[i].jwbArab,
                                             wrongAnswers: [
-                                              "dataJawabanOk[i].jawabanSalah1",
-                                              "dataJawabanOk[i].jawabanSalah2"
+                                              dataSoalOk[i].jwbSalah1,
+                                              dataSoalOk[i].jwbSalah2
                                             ],
                                             onRightAnswer: () {
                                               print("hoki bener");
