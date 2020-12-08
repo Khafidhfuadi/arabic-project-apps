@@ -236,7 +236,28 @@ class IntroBegin extends StatelessWidget {
   }
 }
 
-class TableBegin extends StatelessWidget {
+class TableBegin extends StatefulWidget {
+  @override
+  _TableBeginState createState() => _TableBeginState();
+}
+
+class _TableBeginState extends State<TableBegin> {
+  List kamusArab;
+
+  void kosaKata() {
+    getKosaKataBegin().then((value) {
+      setState(() {
+        kamusArab = value;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    kosaKata();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -289,71 +310,65 @@ class TableBegin extends StatelessWidget {
                       ],
                     )),
                 SizedBox(height: 20),
-                SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: DataTable(
-                    columns: [
-                      DataColumn(
-                          label: Text('No.',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.black,
-                                  fontFamily: "Avenir",
-                                  fontWeight: FontWeight.w500))),
-                      DataColumn(
-                          label: Text('Arab',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.black,
-                                  fontFamily: "Avenir",
-                                  fontWeight: FontWeight.w500))),
-                      DataColumn(
-                          label: Text('Indonesia',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.black,
-                                  fontFamily: "Avenir",
-                                  fontWeight: FontWeight.w500))),
-                    ],
-                    rows: [
-                      DataRow(cells: [
-                        DataCell(Text('1')),
-                        DataCell(Text('Baitun')),
-                        DataCell(Text('Rumah')),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(Text('2')),
-                        DataCell(Text('Baabun')),
-                        DataCell(Text('Pintu')),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(Text('3')),
-                        DataCell(Text('Syubbaakun')),
-                        DataCell(Text('Jendela')),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(Text('4')),
-                        DataCell(Text('Sitaarun')),
-                        DataCell(Text('Gorden')),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(Text('5')),
-                        DataCell(Text('Saqfun')),
-                        DataCell(Text('Atap')),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(Text('6')),
-                        DataCell(Text('Qirmiidun')),
-                        DataCell(Text('Genteng')),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(Text('7')),
-                        DataCell(Text('Jidaarun')),
-                        DataCell(Text('Dinding')),
-                      ]),
-                    ],
-                  ),
-                ),
+                Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text("Arab", style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black,
+                                      fontFamily: 'Mont',
+                                      fontWeight: FontWeight.w500)),
+                                  Text("Arab Latin", style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black,
+                                      fontFamily: "Avenir",
+                                      fontWeight: FontWeight.w500)),
+                                  Text("Indonesia", style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black,
+                                      fontFamily: "Avenir",
+                                      fontWeight: FontWeight.w500)),
+                                ],
+                              ),
+                              Divider(),
+                kamusArab == null
+                    ? Center(
+                        child: SpinKitThreeBounce(color: Colors.green[600]))
+                    :
+                 Container(
+                   height: 500,
+                        child: ListView.builder(
+                        itemCount: kamusArab.length,
+                        itemBuilder: (context, i) {
+                          return Column(
+                            children: [
+                              SizedBox(height: 10),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(kamusArab[i].arab, style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black,
+                                      fontFamily: "Avenir",
+                                      fontWeight: FontWeight.w500)),
+                                  Text(kamusArab[i].arabLatin, style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black,
+                                      fontFamily: "Avenir",
+                                      fontWeight: FontWeight.w500)),
+                                  Text(kamusArab[i].indo, style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black,
+                                      fontFamily: "Avenir",
+                                      fontWeight: FontWeight.w500)),
+                                ],
+                              ),
+                            ],
+                          );
+                        },
+                      ))
               ],
             )),
         Container(
@@ -376,3 +391,39 @@ class BeginScroll extends ScrollBehavior {
     return child;
   }
 }
+
+// DataTable(
+//                         columns: [
+//                           DataColumn(
+//                               label: Text('Arab',
+//                                   style: TextStyle(
+//                                       fontSize: 15,
+//                                       color: Colors.black,
+//                                       fontFamily: "Avenir",
+//                                       fontWeight: FontWeight.w500))),
+//                           DataColumn(
+//                               label: Text('Arab Latin',
+//                                   style: TextStyle(
+//                                       fontSize: 15,
+//                                       color: Colors.black,
+//                                       fontFamily: "Avenir",
+//                                       fontWeight: FontWeight.w500))),
+//                           DataColumn(
+//                               label: Text('Indonesia',
+//                                   style: TextStyle(
+//                                       fontSize: 15,
+//                                       color: Colors.black,
+//                                       fontFamily: "Avenir",
+//                                       fontWeight: FontWeight.w500)),
+//                               onSort: (i, b) {
+//                                 setState(() {});
+//                               }),
+//                         ],
+//                         rows: [
+//                           DataRow(cells: [
+//                             DataCell(Text("dsad")),
+//                             DataCell(Text("ddas")),
+//                             DataCell(Text("ddWW")),
+//                           ]),
+//                         ],
+//                       ),

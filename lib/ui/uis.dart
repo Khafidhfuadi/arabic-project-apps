@@ -1,5 +1,6 @@
 // import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:bahasa_arab/constants.dart';
+import 'package:bahasa_arab/models/models.dart';
 import 'package:bahasa_arab/viewModels/viewModels.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -12,7 +13,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
 // import 'dart:convert';
 import 'dart:math';
-import 'dart:async';
 import 'package:percent_indicator/percent_indicator.dart';
 // import 'package:quiz_view/quiz_view.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
