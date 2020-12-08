@@ -20,6 +20,8 @@ import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 
 part 'bottomnavigation.dart';
 
+part 'size_helpers.dart';
+
 // Quiz
 part 'quiz/quiz.dart';
 // Beginner

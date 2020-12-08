@@ -84,7 +84,8 @@ class _LearningState extends State<Learning>
             ),
             SizedBox(height: 15),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 5 / 20),
               child: Row(
                 children: [
                   Container(

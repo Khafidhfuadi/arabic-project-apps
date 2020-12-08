@@ -41,37 +41,6 @@ class _QuizState extends State<Quiz> with SingleTickerProviderStateMixin {
                           image: AssetImage("assets/image/quizbackground.png"),
                           fit: BoxFit.cover)),
                 ),
-                Positioned(
-                    bottom: 20,
-                    left: 0,
-                    right: 0,
-                    child: Container(
-                      alignment: Alignment.center,
-                      margin: EdgeInsets.symmetric(horizontal: kDefaultPadding),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: kDefaultPadding),
-                      height: 50,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(25),
-                          boxShadow: [
-                            BoxShadow(
-                                offset: Offset(0, 10),
-                                blurRadius: 50,
-                                color: kPrimaryColor.withOpacity(0.23))
-                          ]),
-                      child: TextField(
-                        onChanged: (value) {},
-                        decoration: InputDecoration(
-                            hintText: "Search . . .",
-                            hintStyle: TextStyle(
-                                color: Colors.black.withOpacity(0.5),
-                                fontFamily: 'Mont'),
-                            enabledBorder: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            suffixIcon: Icon(Icons.search)),
-                      ),
-                    ))
               ],
             ),
           ),
@@ -84,8 +53,9 @@ class _QuizState extends State<Quiz> with SingleTickerProviderStateMixin {
               child: Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    height: 35,
+                    margin:
+                        EdgeInsets.only(bottom: displayWidth(context) * 0.001),
+                    height: displayHeight(context) * 0.035,
                     child: Stack(
                       children: [
                         Padding(
@@ -129,7 +99,9 @@ class _QuizState extends State<Quiz> with SingleTickerProviderStateMixin {
                       child: ListView(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(right: 100),
+                            margin: EdgeInsets.only(
+                              right: displayWidth(context) * 0.08,
+                            ),
                             child: RaisedButton(
                               onPressed: () {
                                 Navigator.pushNamed(context, '/begconfirm');
@@ -171,7 +143,9 @@ class _QuizState extends State<Quiz> with SingleTickerProviderStateMixin {
                                                 Text(
                                                   "Beginner",
                                                   style: TextStyle(
-                                                      fontSize: 23,
+                                                      fontSize: displayWidth(
+                                                              context) *
+                                                          0.075,
                                                       color: Colors.white,
                                                       fontFamily: 'Mont'),
                                                 ),
@@ -179,7 +153,9 @@ class _QuizState extends State<Quiz> with SingleTickerProviderStateMixin {
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,
-                                                        fontSize: 13,
+                                                        fontSize: displayWidth(
+                                                                context) *
+                                                            0.035,
                                                         color: Colors.white,
                                                         fontFamily: 'Mont')),
                                               ],
@@ -195,7 +171,9 @@ class _QuizState extends State<Quiz> with SingleTickerProviderStateMixin {
                           ),
                           SizedBox(height: 20),
                           Container(
-                            margin: EdgeInsets.only(right: 100),
+                            margin: EdgeInsets.only(
+                              right: displayWidth(context) * 0.08,
+                            ),
                             child: RaisedButton(
                               onPressed: () {
                                 Navigator.pushNamed(context, '/inconfirm');
@@ -237,7 +215,9 @@ class _QuizState extends State<Quiz> with SingleTickerProviderStateMixin {
                                                 Text(
                                                   "Intermediate",
                                                   style: TextStyle(
-                                                      fontSize: 23,
+                                                      fontSize: displayWidth(
+                                                              context) *
+                                                          0.075,
                                                       color: Colors.white,
                                                       fontFamily: 'Mont'),
                                                 ),
@@ -245,7 +225,9 @@ class _QuizState extends State<Quiz> with SingleTickerProviderStateMixin {
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,
-                                                        fontSize: 13,
+                                                        fontSize: displayWidth(
+                                                                context) *
+                                                            0.035,
                                                         color: Colors.white,
                                                         fontFamily: 'Mont')),
                                               ],
@@ -267,7 +249,9 @@ class _QuizState extends State<Quiz> with SingleTickerProviderStateMixin {
                           ),
                           SizedBox(height: 20),
                           Container(
-                            margin: EdgeInsets.only(right: 100),
+                            margin: EdgeInsets.only(
+                              right: displayWidth(context) * 0.08,
+                            ),
                             child: RaisedButton(
                               onPressed: () {
                                 Navigator.pushNamed(context, '/inadvance');
@@ -309,7 +293,9 @@ class _QuizState extends State<Quiz> with SingleTickerProviderStateMixin {
                                                 Text(
                                                   "Advance",
                                                   style: TextStyle(
-                                                      fontSize: 23,
+                                                      fontSize: displayWidth(
+                                                              context) *
+                                                          0.075,
                                                       color: Colors.white,
                                                       fontFamily: 'Mont'),
                                                 ),
@@ -317,7 +303,9 @@ class _QuizState extends State<Quiz> with SingleTickerProviderStateMixin {
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,
-                                                        fontSize: 13,
+                                                        fontSize: displayWidth(
+                                                                context) *
+                                                            0.035,
                                                         color: Colors.white,
                                                         fontFamily: 'Mont')),
                                               ],

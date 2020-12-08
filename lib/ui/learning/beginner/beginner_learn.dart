@@ -168,31 +168,31 @@ class IntroBegin extends StatelessWidget {
                       ],
                     )),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  margin: EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset("assets/image/globalisasi.png",
-                              height: 100),
+                              height: 70),
                           Image.asset("assets/icon/beginlearn.png",
-                              height: 180),
+                              height: 120),
                         ],
                       ),
                       Text(
                           "        Di era globalisasi seperti saat ini, belajar bahasa asing sudah seolah jadi suatu keharusan. Belajar bahasa asing akan mendatangkan banyak keuntungan. Kita jadi bisa berkomunikasi secara langsung dengan orang-orang di berbagai belahan dunia. Salah satu bahasa asing yang penting dan menarik untuk dipelajari ialah bahasa Arab.",
-                          style: TextStyle(fontSize: 13),
+                          style: TextStyle(fontSize: 13, color: Colors.black),
                           textAlign: TextAlign.justify),
                       SizedBox(height: 15),
                       Text(
                           "        Karena penting dipelajari, saat ini bahasa Arab sudah mulai diajarkan di sekolah-sekolah. Bahasa asing memang penting untuk dikuasai, sebab mempunyai banyak penutur, khususnya di negara Timur Tengah. Salah satu cara belajar bahasa asing yang menyenangkan, bisa dengan menghapalkan kata-kata di keseharian.",
-                          style: TextStyle(fontSize: 13),
+                          style: TextStyle(fontSize: 13, color: Colors.black),
                           textAlign: TextAlign.justify),
                       SizedBox(height: 15),
                       Text(
                           "Nah, sebagai bekal kalian belajar, berikut beberapa kosa kata benda dan kata sifat dalam bahasa Arab yang perlu kalian hapalkan.",
-                          style: TextStyle(fontSize: 13),
+                          style: TextStyle(fontSize: 13, color: Colors.black),
                           textAlign: TextAlign.justify)
                     ],
                   ),
@@ -319,39 +319,60 @@ class TableBegin extends StatelessWidget {
                     ],
                     rows: [
                       DataRow(cells: [
-                        DataCell(Text('1')),
-                        DataCell(Text('Baitun')),
-                        DataCell(Text('Rumah')),
+                        DataCell(
+                            Text('1', style: TextStyle(color: Colors.black))),
+                        DataCell(Text('Baitun',
+                            style: TextStyle(color: Colors.black))),
+                        DataCell(Text('Rumah',
+                            style: TextStyle(color: Colors.black))),
                       ]),
                       DataRow(cells: [
-                        DataCell(Text('2')),
-                        DataCell(Text('Baabun')),
-                        DataCell(Text('Pintu')),
+                        DataCell(
+                            Text('2', style: TextStyle(color: Colors.black))),
+                        DataCell(Text('Baabun',
+                            style: TextStyle(color: Colors.black))),
+                        DataCell(Text('Pintu',
+                            style: TextStyle(color: Colors.black))),
                       ]),
                       DataRow(cells: [
-                        DataCell(Text('3')),
-                        DataCell(Text('Syubbaakun')),
-                        DataCell(Text('Jendela')),
+                        DataCell(
+                            Text('3', style: TextStyle(color: Colors.black))),
+                        DataCell(Text('Syubbaakun',
+                            style: TextStyle(color: Colors.black))),
+                        DataCell(Text('Jendela',
+                            style: TextStyle(color: Colors.black))),
                       ]),
                       DataRow(cells: [
-                        DataCell(Text('4')),
-                        DataCell(Text('Sitaarun')),
-                        DataCell(Text('Gorden')),
+                        DataCell(
+                            Text('4', style: TextStyle(color: Colors.black))),
+                        DataCell(Text('Sitaarun',
+                            style: TextStyle(color: Colors.black))),
+                        DataCell(Text('Gorden',
+                            style: TextStyle(color: Colors.black))),
                       ]),
                       DataRow(cells: [
-                        DataCell(Text('5')),
-                        DataCell(Text('Saqfun')),
-                        DataCell(Text('Atap')),
+                        DataCell(
+                            Text('5', style: TextStyle(color: Colors.black))),
+                        DataCell(Text('Saqfun',
+                            style: TextStyle(color: Colors.black))),
+                        DataCell(Text('Atap',
+                            style: TextStyle(color: Colors.black))),
                       ]),
                       DataRow(cells: [
-                        DataCell(Text('6')),
-                        DataCell(Text('Qirmiidun')),
-                        DataCell(Text('Genteng')),
+                        DataCell(
+                            Text('6', style: TextStyle(color: Colors.black))),
+                        DataCell(Text('Qirmiidun',
+                            style: TextStyle(color: Colors.black))),
+                        DataCell(Text('Genteng',
+                            style: TextStyle(color: Colors.black))),
                       ]),
                       DataRow(cells: [
-                        DataCell(Text('7')),
-                        DataCell(Text('Jidaarun')),
-                        DataCell(Text('Dinding')),
+                        DataCell(
+                            Text('7', style: TextStyle(color: Colors.black))),
+                        DataCell(Text('Jidaarun',
+                            style: TextStyle(color: Colors.black))),
+                        DataCell(Text('Dinding',
+                            style: TextStyle(color: Colors.black))),
                       ]),
                     ],
                   ),

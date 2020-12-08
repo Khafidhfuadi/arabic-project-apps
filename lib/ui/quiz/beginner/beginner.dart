@@ -107,7 +107,7 @@ class _BeginnerState extends State<Beginner> {
                                         child: QuizView(
                                             image: Container(
                                               child: Image.asset(
-                                                  "assets/icon/beginnerquiz/${dataSoalOk[i].gambar}",
+                                                  "assets/icon/beginnerquiz/${dataSoalOk[i].gambar}.png",
                                                   height: 110),
                                             ),
                                             showCorrect: true,
