@@ -7,7 +7,7 @@ class Beginner extends StatefulWidget {
 
 class _BeginnerState extends State<Beginner> {
   List dataSoalOk;
-  int counter = 0;
+  int count = 0;
 
   void dataSoal() {
     getSoalBegin().then((value) {
@@ -107,31 +107,31 @@ class _BeginnerState extends State<Beginner> {
                                         child: QuizView(
                                             image: Container(
                                               child: Image.asset(
-                                                  "assets/icon/beginnerquiz/${dataSoalOk[counter].gambar}.png",
+                                                  "assets/icon/beginnerquiz/${dataSoalOk[count].gambar}.png",
                                                   height: 110),
                                             ),
                                             showCorrect: true,
                                             tagColor: Colors.black,
                                             questionTag:
-                                                dataSoalOk[counter].no + ".",
+                                                dataSoalOk[count].no + ".",
                                             answerColor: Colors.white,
                                             answerBackgroundColor: Colors.green,
                                             questionColor: Colors.black,
                                             backgroundColor: Colors.white,
                                             width: 420,
                                             height: 510,
-                                            question: dataSoalOk[counter].soal,
+                                            question: dataSoalOk[count].soal,
                                             rightAnswer:
-                                                dataSoalOk[counter].jwbArab,
+                                                dataSoalOk[count].jwbArab,
                                             wrongAnswers: [
-                                              dataSoalOk[counter].jwbSalah1,
-                                              dataSoalOk[counter].jwbSalah2
+                                              dataSoalOk[count].jwbSalah1,
+                                              dataSoalOk[count].jwbSalah2
                                             ],
                                             onRightAnswer: () {
                                               print("hoki bener");
                                               setState(() {
-                                                if (i < 9) {
-                                                  counter = counter + 1;
+                                                if(dataSoalOk[count].soal < 9) {
+                                                  dataSoalOk[count].soal =  count++;
                                                 }
                                               });
                                               showToast('Benar',
@@ -166,8 +166,8 @@ class _BeginnerState extends State<Beginner> {
                                             onWrongAnswer: () {
                                               print("yah salah");
                                               setState(() {
-                                                if (i < 9) {
-                                                  counter = counter + 1;
+                                                if(dataSoalOk[count].soal < 9) {
+                                                  dataSoalOk[count].soal =  count++;
                                                 }
                                               });
                                               showToast('Salah',
