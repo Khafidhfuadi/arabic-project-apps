@@ -37,7 +37,7 @@ class _IntermediateState extends State<Intermediate> {
   // ];
 
   void checkWin(bool userChoice, BuildContext context, i) {
-    if (userChoice == dataSoalOk[i].value) {
+    if (userChoice == dataSoalOk[counter].value) {
       print("correct");
       final snackbar = SnackBar(
         duration: Duration(milliseconds: 500),
@@ -50,7 +50,7 @@ class _IntermediateState extends State<Intermediate> {
       final snackbar = SnackBar(
         duration: Duration(milliseconds: 500),
         backgroundColor: Colors.red,
-        content: Text("Correct!"),
+        content: Text("Incorrect!"),
       );
       Scaffold.of(context).showSnackBar(snackbar);
     }

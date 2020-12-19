@@ -7,7 +7,7 @@ class Beginner extends StatefulWidget {
 
 class _BeginnerState extends State<Beginner> {
   List dataSoalOk;
-  var counter = 0;
+  int counter = 0;
 
   void dataSoal() {
     getSoalBegin().then((value) {
@@ -107,26 +107,33 @@ class _BeginnerState extends State<Beginner> {
                                         child: QuizView(
                                             image: Container(
                                               child: Image.asset(
-                                                  "assets/icon/beginnerquiz/${dataSoalOk[i].gambar}.png",
+                                                  "assets/icon/beginnerquiz/${dataSoalOk[counter].gambar}.png",
                                                   height: 110),
                                             ),
                                             showCorrect: true,
                                             tagColor: Colors.black,
-                                            questionTag: dataSoalOk[i].no + ".",
+                                            questionTag:
+                                                dataSoalOk[counter].no + ".",
                                             answerColor: Colors.white,
                                             answerBackgroundColor: Colors.green,
                                             questionColor: Colors.black,
                                             backgroundColor: Colors.white,
                                             width: 420,
                                             height: 510,
-                                            question: dataSoalOk[i].soal,
-                                            rightAnswer: dataSoalOk[i].jwbArab,
+                                            question: dataSoalOk[counter].soal,
+                                            rightAnswer:
+                                                dataSoalOk[counter].jwbArab,
                                             wrongAnswers: [
-                                              dataSoalOk[i].jwbSalah1,
-                                              dataSoalOk[i].jwbSalah2
+                                              dataSoalOk[counter].jwbSalah1,
+                                              dataSoalOk[counter].jwbSalah2
                                             ],
                                             onRightAnswer: () {
                                               print("hoki bener");
+                                              setState(() {
+                                                if (i < 9) {
+                                                  counter = counter + 1;
+                                                }
+                                              });
                                               showToast('Benar',
                                                   backgroundColor:
                                                       Colors.green[400],
@@ -158,6 +165,11 @@ class _BeginnerState extends State<Beginner> {
                                             },
                                             onWrongAnswer: () {
                                               print("yah salah");
+                                              setState(() {
+                                                if (i < 9) {
+                                                  counter = counter + 1;
+                                                }
+                                              });
                                               showToast('Salah',
                                                   backgroundColor:
                                                       Colors.red[400],
@@ -216,60 +228,3 @@ class _BeginnerState extends State<Beginner> {
     );
   }
 }
-
-// QuizView(
-//                                             image: Container(
-//                                               child: Image.asset(
-//                                                   "assets/icon/${dataSoalOk[i].gambar}",
-//                                                   height: 110),
-//                                             ),
-//                                             showCorrect: true,
-//                                             tagColor: Colors.black,
-//                                             questionTag:
-//                                                 dataSoalOk[i].soal + ".",
-//                                             answerColor: Colors.white,
-//                                             answerBackgroundColor: Colors.green,
-//                                             questionColor: Colors.black,
-//                                             backgroundColor: Colors.white,
-//                                             width: 420,
-//                                             height: 510,
-//                                             question: dataSoalOk[i].bahasaIndo,
-//                                             rightAnswer:
-//                                                 dataSoalOk[i].bahasaArab,
-//                                             wrongAnswers: [
-//                                               dataJawabanOk[i].jawabanSalah1,
-//                                               dataJawabanOk[i].jawabanSalah2
-//                                             ],
-//                                             )
-
-// onRightAnswer: () {
-//                                               print("hoki lu bener");
-//                                               showToast('Benar',
-//                                                   backgroundColor:
-//                                                       Colors.green[400],
-//                                                   textStyle: TextStyle(
-//                                                       color: Colors.white,
-//                                                       fontFamily: 'Avenir',
-//                                                       fontWeight:
-//                                                           FontWeight.w500),
-//                                                   context: context,
-//                                                   animation:
-//                                                       StyledToastAnimation
-//                                                           .slideFromBottom,
-//                                                   reverseAnimation:
-//                                                       StyledToastAnimation
-//                                                           .slideToBottom,
-//                                                   startOffset: Offset(0.0, 3.0),
-//                                                   reverseEndOffset:
-//                                                       Offset(0.0, 3.0),
-//                                                   position: StyledToastPosition
-//                                                       .bottom,
-//                                                   duration:
-//                                                       Duration(seconds: 4),
-//                                                   //Animation duration   animDuration * 2 <= duration
-//                                                   animDuration:
-//                                                       Duration(seconds: 1),
-//                                                   curve: Curves.elasticOut,
-//                                                   reverseCurve:
-//                                                       Curves.fastOutSlowIn);
-//                                             },

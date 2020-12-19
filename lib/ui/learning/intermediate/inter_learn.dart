@@ -19,7 +19,6 @@ class _InterLearnState extends State<InterLearn> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return Scaffold(
       backgroundColor: HexColor("#fab838"),

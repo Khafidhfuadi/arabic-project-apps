@@ -18,7 +18,6 @@ class _AdvanceLearnState extends State<AdvanceLearn> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return Scaffold(
         backgroundColor: HexColor("#089467"),

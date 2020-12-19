@@ -18,7 +18,6 @@ class _BeginLearnState extends State<BeginLearn> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return Scaffold(
         backgroundColor: HexColor("#089467"),
@@ -312,155 +311,65 @@ class _TableBeginState extends State<TableBegin> {
                       ],
                     )),
                 SizedBox(height: 20),
-                SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: DataTable(
-                    columns: [
-                      DataColumn(
-                          label: Text('No.',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.black,
-                                  fontFamily: "Avenir",
-                                  fontWeight: FontWeight.w500))),
-                      DataColumn(
-                          label: Text('Arab',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.black,
-                                  fontFamily: "Avenir",
-                                  fontWeight: FontWeight.w500))),
-                      DataColumn(
-                          label: Text('Indonesia',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.black,
-                                  fontFamily: "Avenir",
-                                  fontWeight: FontWeight.w500))),
-                    ],
-                    rows: [
-                      DataRow(cells: [
-                        DataCell(
-                            Text('1', style: TextStyle(color: Colors.black))),
-                        DataCell(Text('Baitun',
-                            style: TextStyle(color: Colors.black))),
-                        DataCell(Text('Rumah',
-                            style: TextStyle(color: Colors.black))),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(
-                            Text('2', style: TextStyle(color: Colors.black))),
-                        DataCell(Text('Baabun',
-                            style: TextStyle(color: Colors.black))),
-                        DataCell(Text('Pintu',
-                            style: TextStyle(color: Colors.black))),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(
-                            Text('3', style: TextStyle(color: Colors.black))),
-                        DataCell(Text('Syubbaakun',
-                            style: TextStyle(color: Colors.black))),
-                        DataCell(Text('Jendela',
-                            style: TextStyle(color: Colors.black))),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(
-                            Text('4', style: TextStyle(color: Colors.black))),
-                        DataCell(Text('Sitaarun',
-                            style: TextStyle(color: Colors.black))),
-                        DataCell(Text('Gorden',
-                            style: TextStyle(color: Colors.black))),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(
-                            Text('5', style: TextStyle(color: Colors.black))),
-                        DataCell(Text('Saqfun',
-                            style: TextStyle(color: Colors.black))),
-                        DataCell(Text('Atap',
-                            style: TextStyle(color: Colors.black))),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(
-                            Text('6', style: TextStyle(color: Colors.black))),
-                        DataCell(Text('Qirmiidun',
-                            style: TextStyle(color: Colors.black))),
-                        DataCell(Text('Genteng',
-                            style: TextStyle(color: Colors.black))),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(
-                            Text('7', style: TextStyle(color: Colors.black))),
-                        DataCell(Text('Jidaarun',
-                            style: TextStyle(color: Colors.black))),
-                        DataCell(Text('Dinding',
-                            style: TextStyle(color: Colors.black))),
-                      ]),
-                    ],
-                  ),
-                ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text("Arab",
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontFamily: 'Mont',
-                            fontWeight: FontWeight.w500)),
-                    Text("Arab Latin",
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontFamily: "Avenir",
-                            fontWeight: FontWeight.w500)),
-                    Text("Indonesia",
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontFamily: "Avenir",
-                            fontWeight: FontWeight.w500)),
-                  ],
-                ),
-                Divider(),
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text("Arab", style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black,
+                                      fontFamily: 'Avenir',
+                                      fontWeight: FontWeight.w500)),
+                                  Text("Arab Latin", style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black,
+                                      fontFamily: "Avenir",
+                                      fontWeight: FontWeight.w500)),
+                                  Text("Indonesia", style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black,
+                                      fontFamily: "Avenir",
+                                      fontWeight: FontWeight.w500)),
+                                ],
+                              ),
+                              Divider(),
                 kamusArab == null
                     ? Center(
                         child: SpinKitThreeBounce(color: Colors.green[600]))
-                    : Container(
-                        height: 500,
+                    :
+                 Container(
+                   height: 500,
                         child: ListView.builder(
-                          itemCount: kamusArab.length,
-                          itemBuilder: (context, i) {
-                            return Column(
-                              children: [
-                                SizedBox(height: 10),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text(kamusArab[i].arab,
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.black,
-                                            fontFamily: "Avenir",
-                                            fontWeight: FontWeight.w500)),
-                                    Text(kamusArab[i].arabLatin,
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.black,
-                                            fontFamily: "Avenir",
-                                            fontWeight: FontWeight.w500)),
-                                    Text(kamusArab[i].indo,
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.black,
-                                            fontFamily: "Avenir",
-                                            fontWeight: FontWeight.w500)),
-                                  ],
-                                ),
-                              ],
-                            );
-                          },
-                        ))
+                        itemCount: kamusArab.length,
+                        itemBuilder: (context, i) {
+                          return Column(
+                            children: [
+                              SizedBox(height: 10),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(kamusArab[i].arab, style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black,
+                                      fontFamily: "Mont",
+                                      fontWeight: FontWeight.w500)),
+                                  Text(kamusArab[i].arabLatin, style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black,
+                                      fontFamily: "Avenir",
+                                      fontWeight: FontWeight.w500)),
+                                  Text(kamusArab[i].indo, style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.black,
+                                      fontFamily: "Avenir",
+                                      fontWeight: FontWeight.w500)),
+                                ],
+                              ),
+                            ],
+                          );
+                        },
+                      ))
               ],
             )),
         Container(
