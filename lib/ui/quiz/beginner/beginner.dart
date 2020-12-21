@@ -130,8 +130,8 @@ class _BeginnerState extends State<Beginner> {
                                             onRightAnswer: () {
                                               print("hoki bener");
                                               setState(() {
-                                                if(dataSoalOk[count].soal < 9) {
-                                                  dataSoalOk[count].soal =  count++;
+                                                if(i < 9) {
+                                                  count =  count++;
                                                 }
                                               });
                                               showToast('Benar',
@@ -166,8 +166,8 @@ class _BeginnerState extends State<Beginner> {
                                             onWrongAnswer: () {
                                               print("yah salah");
                                               setState(() {
-                                                if(dataSoalOk[count].soal < 9) {
-                                                  dataSoalOk[count].soal =  count++;
+                                                if(i < 9) {
+                                                  count =  count++;
                                                 }
                                               });
                                               showToast('Salah',
