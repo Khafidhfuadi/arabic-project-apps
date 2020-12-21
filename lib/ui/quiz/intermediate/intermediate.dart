@@ -42,7 +42,7 @@ class _IntermediateState extends State<Intermediate> {
       final snackbar = SnackBar(
         duration: Duration(milliseconds: 500),
         backgroundColor: Colors.green,
-        content: Text("Correct!"),
+        content: Text("Benar!"),
       );
       Scaffold.of(context).showSnackBar(snackbar);
     } else {
@@ -50,7 +50,7 @@ class _IntermediateState extends State<Intermediate> {
       final snackbar = SnackBar(
         duration: Duration(milliseconds: 500),
         backgroundColor: Colors.red,
-        content: Text("Incorrect!"),
+        content: Text("Salah!"),
       );
       Scaffold.of(context).showSnackBar(snackbar);
     }

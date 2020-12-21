@@ -23,6 +23,14 @@ class _BeginnerState extends State<Beginner> {
     dataSoal();
   }
 
+  void check(i) {
+    setState(() {
+      if (i < 9) {
+        count = count + 1;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -129,11 +137,7 @@ class _BeginnerState extends State<Beginner> {
                                             ],
                                             onRightAnswer: () {
                                               print("hoki bener");
-                                              setState(() {
-                                                if(i < 9) {
-                                                  count =  count++;
-                                                }
-                                              });
+                                              check(i);
                                               showToast('Benar',
                                                   backgroundColor:
                                                       Colors.green[400],
@@ -165,11 +169,7 @@ class _BeginnerState extends State<Beginner> {
                                             },
                                             onWrongAnswer: () {
                                               print("yah salah");
-                                              setState(() {
-                                                if(i < 9) {
-                                                  count =  count++;
-                                                }
-                                              });
+                                              check(i);
                                               showToast('Salah',
                                                   backgroundColor:
                                                       Colors.red[400],
